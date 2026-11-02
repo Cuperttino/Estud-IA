@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- Estud-IA v2.0.0 · By Cuperttino -->
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Estud-IA by Cuppertino</title>
+<title>Estud-IA · by Cuperttino</title>
+<meta name="author" content="Cuperttino"><meta name="application-name" content="Estud-IA"><meta name="version" content="2.0.0">
 <style>
 :root{--bg:#f4f1ff;--card:#fff;--tx:#1b1530;--mu:#6b6585;--p:#7c3aed;--p2:#f472b6;--ok:#10b981;--bd:#e5defa;--hb:linear-gradient(135deg,#7c3aed,#db2777);--ht:#fff;--b1:#a78bfa55;--b2:#f9a8d455;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 :root[data-theme="dark"]{--bg:#15151b;--card:#1e1e26;--tx:#e6e6ec;--mu:#9696a6;--bd:#2c2c37;--p:#6f74a8;--p2:#4b4e72;--ok:#5f9c82;--hb:#262733;--ht:#e6e6ec;--b1:#3a3d5a22;--b2:#2a2c4018;color-scheme:dark}
@@ -295,6 +297,10 @@ button.xsw{width:58px;height:34px;padding:0;border-radius:999px;background:var(-
 #xtoast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:95;background:var(--tx);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:700;font-size:.9rem;pointer-events:none;transition:transform .45s cubic-bezier(.2,1.3,.3,1),opacity .3s;white-space:nowrap;box-shadow:0 12px 30px #0004}
 #xtoast.show{opacity:1;transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){#xsleigh,#xsnow{display:none}}
+
+/* ===== Firma y versión ===== */
+.wrap::after,#auth .in::after,.msh .mgr::after{content:var(--evtxt);display:block;text-align:center;font:600 .72rem/1 var(--fd);letter-spacing:.04em;color:var(--mu);opacity:.75;margin:28px auto 0;padding-top:4px}
+.msh .mgr::after{color:#eefaf6;opacity:.45;margin-top:22px}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#0f766e"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2719%27 fill=%27%230f766e%27/%3E%3Cpath d=%27M14 40c6-3 12-3 18 1 6-4 12-4 18-1V25c-6-3-12-3-18 1-6-4-12-4-18-1z%27 fill=%27%23fff%27/%3E%3Cpath d=%27M46 8l2.200 5.800L54 16l-5.800 2.200L46 24l-2.200-5.800L38 16l5.800-2.200z%27 fill=%27%23f5b83d%27/%3E%3C/svg%3E"></head><body>
@@ -322,6 +328,8 @@ const PETART={
   pig:`<g fill="#f49ab0" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"><path d="M26 44L16 14L50 28Z"/><path d="M94 44L104 14L70 28Z"/></g><ellipse cx="60" cy="62" rx="40" ry="36" fill="#f9bccb" stroke="#3b2a20" stroke-width="3"/><circle cx="30" cy="72" r="6" fill="#f2808f" opacity=".5"/><circle cx="90" cy="72" r="6" fill="#f2808f" opacity=".5"/><ellipse cx="60" cy="72" rx="17" ry="12.5" fill="#f58fa9" stroke="#3b2a20" stroke-width="2.5"/><ellipse cx="53.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/><ellipse cx="66.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/>`,
   bird:`<path d="M50 30Q46 10 60 16Q64 2 72 18Q84 12 78 32Z" fill="#5fb4e6" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"/><g fill="#5fb4e6" stroke="#3b2a20" stroke-width="3"><ellipse cx="18" cy="72" rx="10" ry="18" transform="rotate(15 18 72)"/><ellipse cx="102" cy="72" rx="10" ry="18" transform="rotate(-15 102 72)"/></g><circle cx="60" cy="62" r="40" fill="#7ec8f0" stroke="#3b2a20" stroke-width="3"/><ellipse cx="60" cy="82" rx="26" ry="16" fill="#e6f6fd"/><circle cx="31" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><circle cx="89" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><path d="M50 66Q60 62 70 66L60 82Z" fill="#ffb02e" stroke="#3b2a20" stroke-width="2.5" stroke-linejoin="round"/>`
 };
+window.EV={v:"2.0.0",by:"Cuperttino"};
+try{document.documentElement.style.setProperty("--evtxt",JSON.stringify("Estud-IA \u00b7 v"+EV.v+" \u00b7 by "+EV.by))}catch(e){}
 window.XM=function(){try{return localStorage.getItem("ge_xmas")==="1"}catch(e){return false}};
 window.XD=function(){const n=new Date(),y=n.getFullYear(),d0=new Date(y,n.getMonth(),n.getDate());let t=new Date(y,11,25);if(d0>t)t=new Date(y+1,11,25);const d=Math.round((t-d0)/864e5);return d===0?"🎅 ¡Hoy es Navidad! 🎁":d===1?"🎅 ¡Mañana es Navidad!":"🎅 Faltan "+d+" días para Navidad"};
 try{if(XM())document.documentElement.dataset.xmas="1"}catch(e){}
@@ -901,7 +909,7 @@ function infoSvg(o,t,disp){
   if(o.clave){y+=26;const lines=cut(o.clave,18,IW-84).slice(0,4),h=36+lines.length*26;
     b+=`<rect x="${P}" y="${y}" width="${IW}" height="${h}" rx="14" fill="#fff6d6" stroke="#f5b800" stroke-width="2"/>`+tx(P+20,y+38,28,400,"#000","💡");
     lines.forEach((l,j)=>b+=tx(P+64,y+36+j*26,18,700,"#5b4200",l));y+=h}
-  y+=34;b+=tx(W/2,y,12,500,"#9ca3af","Estud-IA · "+S.subs[t.s].n+" · "+t.n,' text-anchor="middle"');y+=22;
+  y+=34;b+=tx(W/2,y,12,500,"#9ca3af","Estud-IA by Cuperttino · "+S.subs[t.s].n+" · "+t.n,' text-anchor="middle"');y+=22;
   const H=y;
   return{W,H,svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="${ff}"${disp?' style="width:100%;height:auto;display:block;border-radius:12px"':""}><rect width="${W}" height="${H}" fill="#f8fafc"/>${b}</svg>`};
 }
@@ -1175,7 +1183,7 @@ async function aiRun(c,prompt,o){
     poll:async m=>{const r=await fetch("https://text.pollinations.ai/openai",{method:"POST",headers:J,body:JSON.stringify({model:m,messages:[{role:"user",content:prompt}]})});
       if(!r.ok)await aiFail(r);const j=await r.json();return j.choices[0].message.content},
     groq:oa("https://api.groq.com/openai/v1/chat/completions"),
-    openrouter:oa("https://openrouter.ai/api/v1/chat/completions",{"x-title":"Estud-IA by Cuppertino"}),
+    openrouter:oa("https://openrouter.ai/api/v1/chat/completions",{"x-title":"Estud-IA by Cuperttino"}),
     openai:oa("https://api.openai.com/v1/chat/completions"),
     anthropic:async m=>{const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{...J,"x-api-key":c.k,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:m,max_tokens:8000,messages:[{role:"user",content:prompt}]})});
       if(!r.ok)await aiFail(r);const j=await r.json();return j.content.map(x=>x.text||"").join("")}
@@ -1303,6 +1311,8 @@ function pdfBuild(title,bl){
     d.splitTextToSize((b.t==="li"?"- ":"")+cln(b.s),W-ind).forEach(l=>{if(y>780){d.addPage();y=60}d.text(l,50+ind,y);y+=lh});
     y+=b.t==="o"?1:5;
   });
+  const np=d.getNumberOfPages(),pw=d.internal.pageSize.getWidth(),ph=d.internal.pageSize.getHeight();
+  for(let i=1;i<=np;i++){d.setPage(i);d.setFont("helvetica","normal");d.setFontSize(8);d.setTextColor(150);d.text("Estud-IA - by "+EV.by+" - v"+EV.v+"  |  "+i+"/"+np,pw/2,ph-24,{align:"center"})}
   return d;
 }
 function savePdf(d,fn){try{d.save(fn)}catch(e){alert("No se pudo descargar el PDF.")}}
@@ -1348,7 +1358,8 @@ function ajV(){
   <input id="aim" placeholder="Modelo (déjalo vacío: elijo uno gratuito que funcione)" value="${esc(ai.m||"")}" style="width:100%;margin-bottom:8px;${au?"display:none":""}">
   <div class="row"><button id="aisave">Guardar</button><button class="g" id="aitest">Probar</button></div></div>
   <div class="card"><h2>💾 Copia de seguridad</h2><div class="sub">Tus datos viven en este navegador. Descarga una copia para no perderlos o para pasarlos a otro dispositivo (no incluye la clave de IA).</div>
-  <div class="row"><button class="g" id="bkx">⬇ Descargar copia</button><label class="g" style="padding:10px 16px;border:1px solid var(--bd);border-radius:14px;cursor:pointer;color:var(--p);font-weight:600">⬆ Restaurar<input type="file" id="bki" accept=".json" style="display:none"></label></div></div>`;
+  <div class="row"><button class="g" id="bkx">⬇ Descargar copia</button><label class="g" style="padding:10px 16px;border:1px solid var(--bd);border-radius:14px;cursor:pointer;color:var(--p);font-weight:600">⬆ Restaurar<input type="file" id="bki" accept=".json" style="display:none"></label></div></div>
+  <div class="card" style="text-align:center"><div style="display:flex;justify-content:center;line-height:0;margin-bottom:8px">${logoSvg(48)}</div><h2 style="margin:0 0 2px">Estud-IA</h2><div class="mu">Versión ${EV.v} · By ${EV.by}</div><div class="mu" style="margin-top:10px;font-size:.8rem">Novedades de la ${EV.v}: nuevo diseño, menús animados y modo navideño 🎄</div></div>`;
 }
 function tcardOld(){
   const c=document.getElementById("tcard");if(!c||!tm)return;
