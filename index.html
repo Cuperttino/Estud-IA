@@ -1231,7 +1231,7 @@ function tcard(){
   if(!tm&&FX.pill(e))return;
   document.body.classList.toggle("tm",!!tm);
   if(!tm){e.classList.add("hide");e.dataset.k="";return}
-  const sig=tm.s+"|"+(tm.key||"q");
+  const sig=tm.s+"|"+(tm.key||"q")+"|"+PET;
   if(e.dataset.k!==sig){e.dataset.k=sig;e.innerHTML=`<span class="tfb">${bear(32,"glasses")}</span><div class="tfi"><div class="tfs">${esc(S.subs[tm.s].n)}${tm.key?"":" · 10 min"}</div><div class="tft" id="tft"></div></div><button class="g tfbt" id="tp"></button><button class="g tfbt" id="tx">✕</button>`}
   e.classList.remove("hide");
   const left=tm.p?Math.ceil(tm.rem/1000):Math.max(0,Math.ceil((tm.end-Date.now())/1000)),mm=String(Math.floor(left/60)).padStart(2,"0"),ss=String(left%60).padStart(2,"0");
@@ -1903,7 +1903,7 @@ const FX=(function(){
   function pill(e){
     const F=S.fs;if(!F||tab==="fo")return false;
     document.body.classList.add("tm");
-    const sig=F.end?"fe":"fr";
+    const sig=(F.end?"fe":"fr")+"|"+PET;
     if(e.dataset.k!==sig){e.dataset.k=sig;e.innerHTML=F.end?`<span class="tfb">${bear(32,"glasses")}</span><div class="tfi"><div class="tfs">Focus terminado</div><div class="tft">🎉 ¡Hecho!</div></div><button class="g tfbt" data-tab="fo">Cerrar</button>`:`<span class="tfb">${bear(32,"glasses")}</span><div class="tfi"><div class="tfs" id="tfs"></div><div class="tft" id="tft"></div></div><button class="g tfbt" id="fpp"></button><button class="g tfbt" data-tab="fo" aria-label="Abrir Focus">↗</button>`}
     e.classList.remove("hide");
     if(!F.end){const now=Date.now(),p=pos(F,now);if(!p.done){const brk=F.sg[p.i].k==="b";$("tfs").textContent=(brk?"☕ Descanso":"📖 "+lab(F,p,now).ph)+(F.pa?" · pausa":"");$("tft").textContent=mmss(p.rem);$("fpp").textContent=F.pa?"▶":"⏸"}}
