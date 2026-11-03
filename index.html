@@ -928,11 +928,14 @@ document.getElementById("ambV").oninput=e=>{avol=e.target.value/100*.5;if(AG)AG.
 let CP=null,NG=null;
 function drops(){
   if(amb!=="s"||!AC||!NG)return;
-  const t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain(),f=380+Math.random()*820;
-  o.type="sine";o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*1.5,t+.07);
-  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.018+Math.random()*.03,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+.11);
-  o.connect(g);g.connect(NG);o.start(t);o.stop(t+.14);
-  dropT=setTimeout(drops,130+Math.random()*420);
+  const n=1+Math.floor(Math.random()*3);
+  for(let k=0;k<n;k++){
+    const t=AC.currentTime+Math.random()*.05,o=AC.createOscillator(),g=AC.createGain(),f=450+Math.random()*1900,d=.04+Math.random()*.07;
+    o.type="sine";o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*(1.3+Math.random()*.9),t+d);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.03+Math.random()*.06,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+d+.03);
+    o.connect(g);g.connect(NG);o.start(t);o.stop(t+d+.06);
+  }
+  dropT=setTimeout(drops,35+Math.random()*95);
 }
 function setAmb(m){
   try{
@@ -949,7 +952,16 @@ function setAmb(m){
     const lp=AC.createBiquadFilter();lp.type="lowpass";
     if(m==="w"){lp.frequency.value=1600;const g=AC.createGain();g.gain.value=.5;s.connect(lp);lp.connect(g);g.connect(NG)}
     else if(m==="b"){lp.frequency.value=900;const hp=AC.createBiquadFilter();hp.type="highpass";hp.frequency.value=40;const g=AC.createGain();g.gain.value=1.2;s.connect(hp);hp.connect(lp);lp.connect(g);g.connect(NG)}
-    else{[[450,.7,.31],[850,.9,.47],[1500,1.1,.23],[2400,1.2,.37]].forEach(a=>{const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=a[0];bp.Q.value=a[1];const g=AC.createGain();g.gain.value=a[0]>2000?.5:1.1;const l=AC.createOscillator(),lg=AC.createGain();l.frequency.value=a[2];lg.gain.value=a[0]*.35;l.connect(lg);lg.connect(bp.frequency);l.start();(window.__lfo=window.__lfo||[]).push(l);s.connect(bp);bp.connect(g);g.connect(NG)});drops()}
+    else{
+      const lo=AC.createBufferSource();lo.buffer=noiseBuf(false);lo.loop=true;const lf=AC.createBiquadFilter();lf.type="lowpass";lf.frequency.value=520;const lg0=AC.createGain();lg0.gain.value=.55;lo.connect(lf);lf.connect(lg0);lg0.connect(NG);lo.start();(window.__lfo=window.__lfo||[]).push(lo);
+      [[650,5,2.3,.45],[1100,6,3.7,.4],[1750,7,5.3,.4],[2600,6,7.1,.35]].forEach(a=>{
+        const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=a[0];bp.Q.value=a[1];
+        const g=AC.createGain();g.gain.value=2.2;
+        const l=AC.createOscillator(),ld=AC.createGain();l.frequency.value=a[2];ld.gain.value=a[0]*a[3];l.connect(ld);ld.connect(bp.frequency);l.start();
+        const l2=AC.createOscillator(),ld2=AC.createGain();l2.frequency.value=a[2]*.61;ld2.gain.value=.9;l2.connect(ld2);ld2.connect(g.gain);l2.start();
+        (window.__lfo=window.__lfo||[]).push(l,l2);s.connect(bp);bp.connect(g);g.connect(NG)});
+      drops();
+    }
     s.start();AN=s;
   }catch(e){toast("No se pudo activar el sonido ambiente.")}
 }
