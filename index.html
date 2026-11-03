@@ -250,47 +250,6 @@ nav #mbtn.open .bars .hb1:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 #mbtn .cl.sw{animation:lblin .45s cubic-bezier(.2,.9,.2,1)}
 @keyframes lblin{from{opacity:0;transform:translateY(9px)}}
 
-/* ===== Modo navideño · Noche de invierno (html[data-xmas="1"], intensidad data-xi 1-3) ===== */
-html[data-xmas="1"]:not([data-theme="dark"]){--bg:#f6f1e6;--card:#fffdf7;--tx:#1c2a22;--mu:#566459;--p:#1d5a42;--p2:#b48a32;--ok:#2f7a55;--bd:#e5dcc8;--hb:linear-gradient(135deg,#12382a 0%,#1d5a42 100%);--ht:#fbf6e8;--pt:#fff;--b1:#1d5a4222;--b2:#b48a3220;--xr:#9c3434;--sh:0 1px 2px #1c2a2210,0 12px 30px -10px #1c2a2230}
-html[data-xmas="1"][data-theme="dark"]{--bg:#0c1411;--card:#13201a;--tx:#eee8da;--mu:#a7b2a8;--bd:#23352c;--p:#78c4a0;--p2:#d8b870;--ok:#6fcf9a;--hb:linear-gradient(135deg,#0f2b20 0%,#1a4634 100%);--ht:#f4eedd;--pt:#0c1411;--b1:#78c4a018;--b2:#d8b87012;--xr:#d98080;--sh:0 1px 0 #ffffff08 inset,0 14px 34px -8px #0009}
-html[data-xmas="1"] .hero::before{background:radial-gradient(60% 90% at 95% 0,#f4e7c022,transparent 62%),radial-gradient(40% 60% at 0 115%,#00000033,transparent 65%)}
-html[data-xmas="1"] .hero-cta button{color:#14402f}
-html[data-xmas="1"] .elogo{filter:none}
-html[data-xmas="1"] .eyebrow{letter-spacing:.06em;white-space:nowrap}
-html[data-xi="2"] .hero,html[data-xi="3"] .hero{box-shadow:0 22px 48px -14px color-mix(in srgb,var(--p) 55%,transparent),inset 0 1px 0 #f1dfa866}
-html[data-xi="2"] .eyebrow::before,html[data-xi="3"] .eyebrow::before{content:"\2726\00a0";color:#e8cf8c}
-html[data-xi="2"] #brand::after,html[data-xi="3"] #brand::after{content:"\2726";position:absolute;left:26px;top:3px;font-size:.6rem;line-height:1;color:var(--p2);pointer-events:none}
-#xl{position:fixed;left:0;right:0;top:0;height:14px;z-index:16;pointer-events:none}
-#xl svg{display:block}
-#xl .d{opacity:.85}
-#xl.go .d{animation:xtw .9s ease-in-out 2 both;animation-delay:calc(var(--i)*.08s)}
-@keyframes xtw{50%{opacity:.2}}
-#xsn{position:fixed;inset:0;z-index:9;pointer-events:none;overflow:hidden;transition:opacity .6s}
-#xsn i{position:absolute;top:-10px;width:var(--s);height:var(--s);border-radius:50%;background:#9fb8ab;opacity:var(--o);animation:xfall var(--d) linear var(--dl) var(--it) both}
-html[data-theme="dark"] #xsn i{background:#fff;box-shadow:0 0 3px #fff6}
-@keyframes xfall{to{transform:translate3d(var(--dx),108vh,0)}}
-body.foc #xsn,body.tm #xsn{opacity:0}
-#xq{position:fixed;right:102px;top:calc(8px + env(safe-area-inset-top,0px));width:44px;height:44px;min-height:0;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;border-radius:50%;color:var(--tx);z-index:12;transition:opacity .5s,color .2s}
-#xq svg{display:block}
-#xq.on{color:var(--p)}
-#xq.on::after{content:"";position:absolute;top:9px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--xr,#9c3434)}
-body.foc #xq{opacity:.3}
-button.xsw{width:44px;height:26px;min-height:0;padding:0;border-radius:999px;background:color-mix(in srgb,var(--mu) 45%,var(--bd));position:relative;flex:none;transition:background .25s}
-button.xsw::after{content:"";position:absolute;inset:-9px -2px}
-.xsw i{position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0004;transition:transform .25s var(--ease)}
-.xsw.on{background:var(--p)}.xsw.on i{transform:translateX(18px)}
-.xopts{margin-top:12px;display:flex;flex-direction:column;gap:10px}
-.xseg{display:flex;gap:4px;padding:4px;border-radius:14px;background:color-mix(in srgb,var(--p) 8%,transparent)}
-.xseg button{flex:1;min-height:40px;padding:6px 8px;font-size:.85rem;background:transparent;color:var(--tx);border-radius:10px;font-weight:600}
-.xseg button[aria-checked="true"]{background:var(--card);color:var(--p);box-shadow:0 1px 4px #0002}
-.xchk{display:flex;align-items:center;gap:10px;min-height:44px;font-size:.9rem}
-.xchk input{width:20px;height:20px;min-height:0;accent-color:var(--p)}
-.xdays{font-size:.85rem;padding:8px 12px;border-radius:12px;background:color-mix(in srgb,var(--xr,#9c3434) 9%,transparent);border:1px solid color-mix(in srgb,var(--xr,#9c3434) 22%,transparent)}
-#xtoast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translate(-50%,10px);opacity:0;z-index:95;background:#12382a;color:#f6efdc;border:1px solid #d8b87055;padding:10px 16px;border-radius:999px;font:600 .88rem "Inter",sans-serif;transition:opacity .3s,transform .3s;pointer-events:none;max-width:90vw;text-align:center}
-#xtoast.show{opacity:1;transform:translate(-50%,0)}
-@media(min-width:900px){#xq{right:auto;left:118px;top:auto;bottom:18px;border:1px solid var(--bd);border-radius:14px;background:var(--bg);z-index:16}#xq.on::after{top:7px;right:7px}}
-@media(prefers-reduced-motion:reduce){#xsn{display:none}#xl .d{animation:none!important}}
-
 /* ===== Firma y versión ===== */
 .wrap::after,#auth .in::after,.msh .mgr::after{content:var(--evtxt);display:block;text-align:center;font:600 .72rem/1 var(--fd);letter-spacing:.04em;color:var(--mu);opacity:.75;margin:28px auto 0;padding-top:4px}
 .msh .mgr::after{color:#eefaf6;opacity:.45;margin-top:22px}
@@ -476,7 +435,6 @@ body.foc #nav:hover,body.foc #nav:focus-within,body.foc #nav:active{opacity:1}
   #syn,#ambBtn{background:var(--bg);z-index:16}
   #tfloat{top:16px;left:calc(50% + var(--sbw)/2)}
   #tts{left:calc(var(--sbw) + 16px);right:16px;bottom:16px}
-  #xtoast{bottom:24px}
   .sbg{font:700 .68rem/1 var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);padding:12px 12px 6px}
   .sbi{display:flex;align-items:center;gap:12px;width:100%;min-height:42px;padding:8px 12px;margin:0;background:transparent;color:var(--mu);font:600 .93rem/1 "Inter",sans-serif;text-align:left;border-radius:14px;position:relative;transition:background .2s,color .2s}
   .sbi svg{flex:none;transition:transform .3s var(--ease)}
@@ -518,7 +476,7 @@ button.tmc:active{transform:scale(.98)}
 <div id="brand" title="¡Hola!"></div>
 <div id="tfloat" class="hide"></div>
 <div id="syn" title="Cambiar tema claro/oscuro">🌙</div>
-<button id="ambBtn" title="Sonidos ambiente">🎧</button><button id="xq" aria-label="Modo navideño" aria-pressed="false" title="Modo navideño"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 7 10h3l-4 6h4l-3 4h12l-3-4h4l-4-6h3z"/><path d="M12 20v2"/></svg></button>
+<button id="ambBtn" title="Sonidos ambiente">🎧</button>
 <div id="ambP" class="card hide"><b>Sonido ambiente</b><div class="row" style="margin:10px 0"><button class="g amb on" data-m="off">Apagado</button><button class="g amb" data-m="w">Ruido blanco</button><button class="g amb" data-m="b">Ruido marrón</button></div><label class="mu">Volumen <input type="range" id="ambV" min="0" max="100" value="30" style="width:100%"></label></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
@@ -537,18 +495,13 @@ const PETART={
 };
 window.EV={v:"3.1.0",by:"Cuperttino"};
 try{document.documentElement.style.setProperty("--evtxt",JSON.stringify("Estud-IA \u00b7 v"+EV.v+" \u00b7 by "+EV.by))}catch(e){}
-window.XM=function(){try{return localStorage.getItem("ge_xmas")==="1"}catch(e){return false}};
-window.XD=function(){const n=new Date(),y=n.getFullYear(),d0=new Date(y,n.getMonth(),n.getDate());let t=new Date(y,11,25);if(d0>t)t=new Date(y+1,11,25);const d=Math.round((t-d0)/864e5);return d===0?"🎅 ¡Hoy es Navidad! 🎁":d===1?"🎅 ¡Mañana es Navidad!":"🎅 Faltan "+d+" días para Navidad"};
-window.XI=function(){try{const v=+localStorage.getItem("ge_xmas_i");return v>=1&&v<=3?v:2}catch(e){return 2}};
-window.XS=function(){try{return localStorage.getItem("ge_xmas_s")==="1"}catch(e){return false}};
-try{if(XM()){document.documentElement.dataset.xmas="1";document.documentElement.dataset.xi=String(XI())}}catch(e){}
-function logoSvg(sz){sz=sz||32;const u="lg"+Math.random().toString(36).slice(2,7);return `<svg class="elogo" width="${sz}" height="${sz}" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${(window.XM&&XM())?"#4f9d7a":"#7c6bff"}"/><stop offset="1" stop-color="${(window.XM&&XM())?"#12382a":"#3b2fc9"}"/></linearGradient></defs><rect width="64" height="64" rx="19" fill="url(#${u})"/><path d="M14 40c6-3 12-3 18 1 6-4 12-4 18-1V25c-6-3-12-3-18 1-6-4-12-4-18-1z" fill="#fff" fill-opacity=".95"/><path d="M32 26v15" stroke="#3b2fc9" stroke-width="2" stroke-linecap="round" opacity=".35"/><path class="spk2" d="M46 8l2.2 5.8L54 16l-5.8 2.2L46 24l-2.2-5.8L38 16l5.8-2.2z" fill="#f5b83d"/></svg>`}
+function logoSvg(sz){sz=sz||32;const u="lg"+Math.random().toString(36).slice(2,7);return `<svg class="elogo" width="${sz}" height="${sz}" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c6bff"/><stop offset="1" stop-color="#3b2fc9"/></linearGradient></defs><rect width="64" height="64" rx="19" fill="url(#${u})"/><path d="M14 40c6-3 12-3 18 1 6-4 12-4 18-1V25c-6-3-12-3-18 1-6-4-12-4-18-1z" fill="#fff" fill-opacity=".95"/><path d="M32 26v15" stroke="#3b2fc9" stroke-width="2" stroke-linecap="round" opacity=".35"/><path class="spk2" d="M46 8l2.2 5.8L54 16l-5.8 2.2L46 24l-2.2-5.8L38 16l5.8-2.2z" fill="#f5b83d"/></svg>`}
 function petSvg(k,sz,mood){
   sz=sz||48;mood=mood||"";
   const eyes=mood==="sleep"?'<path d="M37 58q5 5 10 0M73 58q5 5 10 0" stroke="#2b1d16" stroke-width="3" fill="none" stroke-linecap="round"/>':'<circle class="eye" cx="42" cy="58" r="4.6" fill="#2b1d16"/><circle class="eye" cx="78" cy="58" r="4.6" fill="#2b1d16"/>';
   const gl=mood==="glasses"?'<g fill="none" stroke="#3b2a20" stroke-width="2.6"><circle cx="42" cy="58" r="10"/><circle cx="78" cy="58" r="10"/><path d="M52 58h16"/></g>':"";
   const z=mood==="sleep"?'<text class="zz" x="92" y="30" font-size="16" font-weight="700" fill="#8a7a6b">z</text><text class="zz z2" x="102" y="18" font-size="12" font-weight="700" fill="#8a7a6b">z</text>':"";
-  const hat=(window.XM&&XM()&&XI()>=2)?'<g class="xhat"><path d="M32 33Q38 12 66 8Q66 20 90 33Z" fill="#9c3434"/><rect x="27" y="30" width="64" height="8" rx="4" fill="#f4ecd8"/><circle cx="68" cy="8" r="5" fill="#f4ecd8"/></g>':"";
+  const hat="";
   const scarf='<path d="M26 92Q60 112 94 92L91 104Q60 122 29 104Z" style="fill:var(--p)" stroke="#3b2a20" stroke-width="2.5" stroke-linejoin="round"/>';
   return `<svg class="bear" width="${sz}" height="${sz}" viewBox="0 0 120 120" aria-hidden="true">${PETART[k]||PETART.bear}${eyes}${gl}${scarf}${hat}${z}</svg>`;
 }
@@ -1559,7 +1512,6 @@ function ajV(){
   ${S.subs.map((s,i)=>`<div style="margin-bottom:12px"><div class="row" style="margin-bottom:4px"><span class="dot" style="background:${COL[i%COL.length]}"></span><input class="grow sn" data-i="${i}" value="${esc(s.n)}"><select class="sd" data-i="${i}"><option value="1" ${s.d==1?"selected":""}>Fácil</option><option value="2" ${s.d==2?"selected":""}>Media</option><option value="3" ${s.d==3?"selected":""}>Difícil</option></select><button class="g" data-sdel="${i}" style="padding:6px 10px">${cf==="sd"+i?"¿Borrar?":"🗑"}</button></div>${tRow(i)}${xRow(i)}</div>`).join("")}
   <div class="row"><button class="g" id="subadd">+ Añadir asignatura</button></div>
   <div class="row" style="margin-top:14px"><button id="sv">Guardar y regenerar plan</button><button class="g" id="rs">${cf==="rs"?"¿Seguro? Pulsa otra vez":"Reiniciar progreso"}</button></div></div>
-  <div class="card"><div class="row"><span class="grow"><b>Modo navideño</b><div class="mu" style="font-size:.82rem">Ambiente sobrio de invierno. Opcional.</div></span><button class="xsw ${XM()?"on":""}" id="xmasT" role="switch" aria-checked="${XM()?"true":"false"}" aria-label="Modo navideño"><i></i></button></div>${XM()?`<div class="xopts"><div class="mu" id="xil" style="font-size:.82rem">Intensidad</div><div class="xseg" role="radiogroup" aria-labelledby="xil">${[["1","Sutil"],["2","Normal"],["3","Festivo"]].map(a=>`<button role="radio" data-xi="${a[0]}" aria-checked="${XI()==a[0]?"true":"false"}">${a[1]}</button>`).join("")}</div><label class="xchk"><input type="checkbox" id="xsnowT" ${XS()?"checked":""}> Nieve suave</label><div class="xdays">${XD().replace(/[🎅🎁]/gu,"").trim()}</div></div>`:""}</div>
   <div class="card"><h2>🐾 Mascota</h2><div class="sub">Elige quién te acompaña por la app.</div><div class="row" style="gap:8px">${Object.keys(PETS).map(k=>`<button class="g" data-pet="${k}" style="flex:1;min-width:64px;padding:8px 4px;${PET===k?"border-color:var(--p);box-shadow:0 0 0 2px var(--p)":""}">${petSvg(k,46)}<div style="font-size:.8rem;margin-top:4px">${PETS[k][0]}</div></button>`).join("")}</div></div>
   <div class="card"><h2>🤖 Inteligencia artificial</h2><div class="sub">En modo <b>Automático</b> hace falta <b>conectar tu cuenta gratuita de Puter</b> (un clic); después la app prueba varios modelos (Puter, Pollinations y, si los añades, tus claves gratuitas) y salta sola al siguiente cuando uno se queda sin cuota. Al usarla, tus apuntes se envían a esos servicios para generar la respuesta. Añadir una clave gratuita (opcional) hace que casi nunca se agote.</div>
   <select id="aip" style="width:100%;margin-bottom:8px">${Object.keys(AIP).filter(k=>!AIP[k].hid).map(k=>`<option value="${k}" ${ai.p===k?"selected":""}>${AIP[k].n}</option>`).join("")}</select>
@@ -1977,51 +1929,5 @@ setInterval(()=>{
 draw();
 })();
 </script><script>
-(function(){
-const D=document,H=D.documentElement,LS=localStorage;
-const rm=()=>!!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches);
-const mk=(t,c,h)=>{const e=D.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-const r=(a,b)=>a+Math.random()*(b-a);
-let tt=0,rz=0,oneShot=false;
-function snowfall(n,loop){
-  const o=D.getElementById("xsn");if(o)o.remove();
-  if(rm()||!D.body)return;
-  const s=mk("div");s.id="xsn";s.setAttribute("aria-hidden","true");let h="";
-  for(let i=0;i<n;i++){const d=loop?r(16,28):r(7,11);h+='<i style="left:'+r(0,100).toFixed(1)+'%;--s:'+r(3,6).toFixed(1)+'px;--o:'+r(.45,.85).toFixed(2)+';--d:'+d.toFixed(1)+'s;--dl:'+(loop?"-"+r(0,d).toFixed(1):r(0,3).toFixed(1))+'s;--dx:'+r(-40,40).toFixed(0)+'px;--it:'+(loop?"infinite":"1")+'"></i>'}
-  s.innerHTML=h;if(loop)s.dataset.l="1";D.body.appendChild(s);
-  if(!loop){oneShot=true;setTimeout(()=>{oneShot=false;if(s.parentNode)s.remove();soft()},13000)}
-}
-function soft(){const o=D.getElementById("xsn");if(oneShot)return;if(XM()&&XS()&&!rm()){if(!o||!o.dataset.l)snowfall(window.innerWidth<600?8:14,true)}else if(o)o.remove()}
-function lights(go){
-  let l=D.getElementById("xl");
-  if(!(XM()&&XI()>=3)){if(l)l.remove();return}
-  if(!l){l=mk("div");l.id="xl";l.setAttribute("aria-hidden","true");D.body.appendChild(l)}
-  const W=Math.max(320,window.innerWidth),L=34,n=Math.ceil(W/L)+1,C=["#d8b870","#f1e6c8","#c97b7b"];let d="M0 1",b="";
-  for(let k=0;k<n;k++){const x=k*L;d+=" Q"+(x+L/2)+" 9 "+(x+L)+" 1";b+='<circle class="d" style="--i:'+k+'" cx="'+(x+L/2)+'" cy="9" r="2.6" fill="'+C[k%3]+'"/>'}
-  l.innerHTML='<svg width="'+W+'" height="14" viewBox="0 0 '+W+' 14"><path d="'+d+'" fill="none" stroke="#7a8f80" stroke-opacity=".5" stroke-width="1"/>'+b+'</svg>';
-  if(go&&!rm()){l.classList.add("go");setTimeout(()=>l.classList.remove("go"),3000)}
-}
-function toast(m){let t=D.getElementById("xtoast");if(!t){t=mk("div");t.id="xtoast";t.setAttribute("role","status");D.body.appendChild(t)}t.textContent=m;t.classList.remove("show");void t.offsetWidth;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2600)}
-function apply(go){
-  const on=XM();
-  if(on){H.dataset.xmas="1";H.dataset.xi=String(XI())}else{delete H.dataset.xmas;delete H.dataset.xi}
-  const q=D.getElementById("xq");if(q){q.classList.toggle("on",on);q.setAttribute("aria-pressed",on?"true":"false")}
-  lights(go);
-  if(!on){oneShot=false;const o=D.getElementById("xsn");if(o)o.remove()}
-  else if(go&&XI()>=3)snowfall(22,false);else soft();
-}
-window.xmasApply=function(on){apply(!!on)};
-D.addEventListener("click",e=>{
-  const t=e.target.closest&&e.target.closest("#xmasT,#xq,[data-xi]");if(!t)return;
-  if(t.dataset.xi){try{LS.setItem("ge_xmas_i",t.dataset.xi)}catch(_){}apply(true);if(window.__redraw)window.__redraw();return}
-  const on=!XM();try{LS.setItem("ge_xmas",on?"1":"0")}catch(_){}
-  apply(true);
-  toast(on?"Modo navideño activado":"Modo navideño desactivado");
-  if(window.__redraw)window.__redraw();else t.classList.toggle("on",on);
-});
-D.addEventListener("change",e=>{if(e.target.id==="xsnowT"){try{LS.setItem("ge_xmas_s",e.target.checked?"1":"0")}catch(_){}const o=D.getElementById("xsn");if(o)o.remove();oneShot=false;soft()}});
-window.addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>lights(false),200)});
-apply(false);
-})();
 </script>
 </body></html>
