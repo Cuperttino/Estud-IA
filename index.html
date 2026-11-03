@@ -528,7 +528,7 @@ button.tmc:active{transform:scale(.98)}
 <div id="tfloat" class="hide"></div>
 <div id="syn" title="Cambiar tema claro/oscuro">🌙</div>
 <button id="ambBtn" title="Sonidos ambiente">🎧</button>
-<div id="ambP" class="card hide"><b>Sonido ambiente</b><div class="row" style="margin:10px 0"><button class="g amb on" data-m="off">Apagado</button><button class="g amb" data-m="w">Ruido blanco</button><button class="g amb" data-m="b">Ruido marrón</button><button class="g amb" data-m="s">Arroyo 💧</button></div><label class="mu">Volumen <input type="range" id="ambV" min="0" max="100" value="30" style="width:100%"></label></div>
+<div id="ambP" class="card hide"><b>Sonido ambiente</b><div class="row" style="margin:10px 0"><button class="g amb on" data-m="off">Apagado</button><button class="g amb" data-m="w">Ruido blanco</button><button class="g amb" data-m="b">Ruido marrón</button></div><label class="mu">Volumen <input type="range" id="ambV" min="0" max="100" value="30" style="width:100%"></label></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -926,17 +926,6 @@ document.getElementById("ambBtn").onclick=()=>document.getElementById("ambP").cl
 document.querySelectorAll(".amb").forEach(b=>b.onclick=()=>{setAmb(b.dataset.m);document.querySelectorAll(".amb").forEach(x=>x.classList.toggle("on",x===b))});
 document.getElementById("ambV").oninput=e=>{avol=e.target.value/100*.5;if(AG)AG.gain.setTargetAtTime(avol,AC.currentTime,.1)};
 let CP=null,NG=null;
-function drops(){
-  if(amb!=="s"||!AC||!NG)return;
-  const n=1+Math.floor(Math.random()*3);
-  for(let k=0;k<n;k++){
-    const t=AC.currentTime+Math.random()*.05,o=AC.createOscillator(),g=AC.createGain(),f=450+Math.random()*1900,d=.04+Math.random()*.07;
-    o.type="sine";o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*(1.3+Math.random()*.9),t+d);
-    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.03+Math.random()*.06,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+d+.03);
-    o.connect(g);g.connect(NG);o.start(t);o.stop(t+d+.06);
-  }
-  dropT=setTimeout(drops,35+Math.random()*95);
-}
 function setAmb(m){
   try{
     clearTimeout(dropT);(window.__lfo||[]).forEach(l=>{try{l.stop(AC.currentTime+.9)}catch(e){}});window.__lfo=[];const old=NG,os=AN;
@@ -948,20 +937,11 @@ function setAmb(m){
     if(!AG){AG=AC.createGain();CP=AC.createDynamicsCompressor();CP.threshold.value=-30;CP.ratio.value=12;AG.connect(CP);CP.connect(AC.destination)}
     AG.gain.value=avol;
     NG=AC.createGain();NG.gain.setValueAtTime(0,AC.currentTime);NG.gain.linearRampToValueAtTime(1,AC.currentTime+2.5);NG.connect(AG);
-    const s=AC.createBufferSource();s.buffer=noiseBuf(m==="w"||m==="s");s.loop=true;
+    const s=AC.createBufferSource();s.buffer=noiseBuf(m==="w");s.loop=true;
     const lp=AC.createBiquadFilter();lp.type="lowpass";
     if(m==="w"){lp.frequency.value=1600;const g=AC.createGain();g.gain.value=.5;s.connect(lp);lp.connect(g);g.connect(NG)}
     else if(m==="b"){lp.frequency.value=900;const hp=AC.createBiquadFilter();hp.type="highpass";hp.frequency.value=40;const g=AC.createGain();g.gain.value=1.2;s.connect(hp);hp.connect(lp);lp.connect(g);g.connect(NG)}
-    else{
-      const lo=AC.createBufferSource();lo.buffer=noiseBuf(false);lo.loop=true;const lf=AC.createBiquadFilter();lf.type="lowpass";lf.frequency.value=520;const lg0=AC.createGain();lg0.gain.value=.55;lo.connect(lf);lf.connect(lg0);lg0.connect(NG);lo.start();(window.__lfo=window.__lfo||[]).push(lo);
-      [[650,5,2.3,.45],[1100,6,3.7,.4],[1750,7,5.3,.4],[2600,6,7.1,.35]].forEach(a=>{
-        const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=a[0];bp.Q.value=a[1];
-        const g=AC.createGain();g.gain.value=2.2;
-        const l=AC.createOscillator(),ld=AC.createGain();l.frequency.value=a[2];ld.gain.value=a[0]*a[3];l.connect(ld);ld.connect(bp.frequency);l.start();
-        const l2=AC.createOscillator(),ld2=AC.createGain();l2.frequency.value=a[2]*.61;ld2.gain.value=.9;l2.connect(ld2);ld2.connect(g.gain);l2.start();
-        (window.__lfo=window.__lfo||[]).push(l,l2);s.connect(bp);bp.connect(g);g.connect(NG)});
-      drops();
-    }
+    else{lp.frequency.value=900;s.connect(lp);lp.connect(NG)}
     s.start();AN=s;
   }catch(e){toast("No se pudo activar el sonido ambiente.")}
 }
