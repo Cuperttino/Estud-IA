@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- Estud-IA v2.0.0 · By Cuperttino -->
+<!-- Estud-IA v2.2.0 · By Cuperttino -->
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Estud-IA · by Cuperttino</title>
-<meta name="author" content="Cuperttino"><meta name="application-name" content="Estud-IA"><meta name="version" content="2.0.0">
+<meta name="author" content="Cuperttino"><meta name="application-name" content="Estud-IA"><meta name="version" content="2.2.0">
 <style>
 :root{--bg:#f4f1ff;--card:#fff;--tx:#1b1530;--mu:#6b6585;--p:#7c3aed;--p2:#f472b6;--ok:#10b981;--bd:#e5defa;--hb:linear-gradient(135deg,#7c3aed,#db2777);--ht:#fff;--b1:#a78bfa55;--b2:#f9a8d455;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 :root[data-theme="dark"]{--bg:#15151b;--card:#1e1e26;--tx:#e6e6ec;--mu:#9696a6;--bd:#2c2c37;--p:#6f74a8;--p2:#4b4e72;--ok:#5f9c82;--hb:#262733;--ht:#e6e6ec;--b1:#3a3d5a22;--b2:#2a2c4018;color-scheme:dark}
@@ -301,6 +301,57 @@ button.xsw{width:58px;height:34px;padding:0;border-radius:999px;background:var(-
 /* ===== Firma y versión ===== */
 .wrap::after,#auth .in::after,.msh .mgr::after{content:var(--evtxt);display:block;text-align:center;font:600 .72rem/1 var(--fd);letter-spacing:.04em;color:var(--mu);opacity:.75;margin:28px auto 0;padding-top:4px}
 .msh .mgr::after{color:#eefaf6;opacity:.45;margin-top:22px}
+
+/* ===== Modo Focus ===== */
+.fo-hero .chip{margin-top:10px;font-weight:700;padding:6px 12px}
+.fchips{display:flex;flex-wrap:wrap;gap:8px}
+.fchip{width:44px;height:44px;padding:0;border-radius:14px;background:var(--bg);color:var(--tx);border:1px solid var(--bd);font:700 .95rem var(--fd);position:relative;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s,color .2s,border-color .2s}
+.fchip.on{background:var(--p);color:var(--pt);border-color:var(--p);transform:scale(1.08);box-shadow:0 6px 16px color-mix(in srgb,var(--p) 40%,transparent)}
+.fchip.dn::after{content:"\2713";position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:var(--ok);color:#fff;font-size:.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--card)}
+.ftime{display:flex;align-items:center;justify-content:center;gap:20px}
+.ftime button{width:54px;height:54px;padding:0;border-radius:50%;font-size:1.6rem;line-height:1}
+.ftime .fb{font:800 2.9rem/1 var(--fd);letter-spacing:-.045em}
+.ftime small{display:block;margin-top:6px;color:var(--mu);font-size:.8rem}
+button.fq{padding:10px 13px}button.fq.on{background:var(--p);color:var(--pt);border-color:var(--p)}
+#fo-auto.on,#fo-auto.on:hover{background:var(--p)}
+.fprev{margin-top:14px;text-align:center;font-weight:600;font-size:.9rem;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--p) 9%,transparent);color:var(--tx)}
+#fo-go{padding:17px 24px;font-size:1.1rem;box-shadow:0 14px 34px color-mix(in srgb,var(--p) 45%,transparent);animation:fopulse 3s ease-in-out infinite}
+@keyframes fopulse{50%{box-shadow:0 18px 50px color-mix(in srgb,var(--p) 62%,transparent)}}
+.fo-run{text-align:center;padding:24px 18px 20px;transition:background .8s,filter .4s;--fbrk:linear-gradient(135deg,#d97706 0%,#f5b83d 100%)}
+:root[data-theme="dark"] .fo-run{--fbrk:linear-gradient(135deg,#78350f 0%,#b45309 100%)}
+.fo-run.brk{background:var(--fbrk);box-shadow:0 22px 56px #d9770644}
+.fo-run.pau{filter:saturate(.3) brightness(.92)}
+.fo-run>*{position:relative}
+.fo-fx{position:absolute!important;inset:-35%;pointer-events:none;background:radial-gradient(circle at 25% 20%,#ffffff2b,transparent 42%),radial-gradient(circle at 80% 88%,#ffffff1c,transparent 40%);animation:fodrift 16s ease-in-out infinite alternate}
+@keyframes fodrift{to{transform:translate(7%,5%) rotate(10deg)}}
+.fo-ph{font:800 .78rem/1 var(--fd);letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.fo-who{margin-top:8px;font-size:.92rem;opacity:.88}
+.fo-ringw{position:relative;width:min(300px,74vw);aspect-ratio:1;margin:18px auto 12px}
+.fo-ringw svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.fo-tr{fill:none;stroke:#ffffff26;stroke-width:9}
+.fo-pr{fill:none;stroke:#fff;stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 1s linear;filter:drop-shadow(0 0 7px #ffffffaa)}
+.fo-orb{position:absolute;inset:13%;border-radius:50%;background:radial-gradient(circle,#ffffff2e,transparent 68%);animation:fobreath 4s ease-in-out infinite}
+.fo-run.brk .fo-orb{animation-duration:9s}
+@keyframes fobreath{0%,100%{transform:scale(.88);opacity:.55}50%{transform:scale(1.08);opacity:1}}
+.fo-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fo-t{font:800 clamp(3.1rem,17vw,4.5rem)/1 var(--fd);letter-spacing:-.045em;font-variant-numeric:tabular-nums;text-shadow:0 4px 24px #0003}
+.fo-l{margin-top:10px;font-size:.84rem;opacity:.88;max-width:78%}
+.fo-tip{font-size:.9rem;opacity:.92;margin:2px 0 14px}
+.fo-snd{display:block;margin:0 auto 14px;padding:8px 14px;font-size:.8rem;background:#ffffff26;color:#fff;border:1px dashed #ffffff80;border-radius:99px}
+.fo-bar{background:#ffffff2e;height:6px}.fo-bar i{background:#fff}
+.fo-st{font-size:.78rem;opacity:.85;margin:8px 0 16px}
+.fo-ctl{justify-content:center;gap:10px}
+.fo-ctl button{background:#ffffff22;color:#fff;border:1px solid #ffffff40;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.fo-ctl button.fo-main{background:#fff;color:#0b3b4a;border-color:#fff;box-shadow:0 10px 26px #0003}
+.fo-run.brk .fo-ctl button.fo-main{color:#7c3a06}
+.fo-q{width:100%;font-weight:700;margin-bottom:2px}
+.ftl{display:flex;flex-direction:column;gap:6px}
+.ftl>div{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;border:1px solid var(--bd);transition:all .3s}
+.ftl>div.cur{border-color:var(--p);background:color-mix(in srgb,var(--p) 10%,transparent);font-weight:700}
+.ftl>div.dn{opacity:.5}
+.fo-clk{font-variant-numeric:tabular-nums;width:46px;flex:none}
+.fo-now{font-size:.7rem;padding:2px 8px;border-radius:99px;background:var(--p);color:var(--pt)}
+.fo-ok{background:color-mix(in srgb,var(--ok) 14%,var(--card));border-color:var(--ok)}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#0f766e"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2719%27 fill=%27%230f766e%27/%3E%3Cpath d=%27M14 40c6-3 12-3 18 1 6-4 12-4 18-1V25c-6-3-12-3-18 1-6-4-12-4-18-1z%27 fill=%27%23fff%27/%3E%3Cpath d=%27M46 8l2.200 5.800L54 16l-5.800 2.200L46 24l-2.200-5.800L38 16l5.800-2.200z%27 fill=%27%23f5b83d%27/%3E%3C/svg%3E"></head><body>
@@ -317,7 +368,7 @@ button.xsw{width:58px;height:34px;padding:0;border-radius:999px;background:var(-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-/* IMPORTANTE: las cuentas y datos viven en localStorage con estas claves: ge_users, ge_theme, ge_pet y las que acaban en ":<correo>" (eg2, ge_ai, egpet, egsnd…).
+/* IMPORTANTE: los perfiles y datos viven en localStorage con estas claves: ge_users, ge_sess, ge_theme, ge_pet y las que acaban en ":<id del perfil>" (eg2, ge_ai, egpet, egsnd…).
    No renombres ni borres esas claves al editar el código, o los usuarios perderán su cuenta. */
 try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
 const PETS={bear:["Oso","🐻‍❄️"],cat:["Gato","🐱"],dog:["Perro","🐶"],pig:["Cerdo","🐷"],bird:["Pájaro","🐦"]};
@@ -328,7 +379,7 @@ const PETART={
   pig:`<g fill="#f49ab0" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"><path d="M26 44L16 14L50 28Z"/><path d="M94 44L104 14L70 28Z"/></g><ellipse cx="60" cy="62" rx="40" ry="36" fill="#f9bccb" stroke="#3b2a20" stroke-width="3"/><circle cx="30" cy="72" r="6" fill="#f2808f" opacity=".5"/><circle cx="90" cy="72" r="6" fill="#f2808f" opacity=".5"/><ellipse cx="60" cy="72" rx="17" ry="12.5" fill="#f58fa9" stroke="#3b2a20" stroke-width="2.5"/><ellipse cx="53.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/><ellipse cx="66.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/>`,
   bird:`<path d="M50 30Q46 10 60 16Q64 2 72 18Q84 12 78 32Z" fill="#5fb4e6" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"/><g fill="#5fb4e6" stroke="#3b2a20" stroke-width="3"><ellipse cx="18" cy="72" rx="10" ry="18" transform="rotate(15 18 72)"/><ellipse cx="102" cy="72" rx="10" ry="18" transform="rotate(-15 102 72)"/></g><circle cx="60" cy="62" r="40" fill="#7ec8f0" stroke="#3b2a20" stroke-width="3"/><ellipse cx="60" cy="82" rx="26" ry="16" fill="#e6f6fd"/><circle cx="31" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><circle cx="89" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><path d="M50 66Q60 62 70 66L60 82Z" fill="#ffb02e" stroke="#3b2a20" stroke-width="2.5" stroke-linejoin="round"/>`
 };
-window.EV={v:"2.0.0",by:"Cuperttino"};
+window.EV={v:"2.2.0",by:"Cuperttino"};
 try{document.documentElement.style.setProperty("--evtxt",JSON.stringify("Estud-IA \u00b7 v"+EV.v+" \u00b7 by "+EV.by))}catch(e){}
 window.XM=function(){try{return localStorage.getItem("ge_xmas")==="1"}catch(e){return false}};
 window.XD=function(){const n=new Date(),y=n.getFullYear(),d0=new Date(y,n.getMonth(),n.getDate());let t=new Date(y,11,25);if(d0>t)t=new Date(y+1,11,25);const d=Math.round((t-d0)/864e5);return d===0?"🎅 ¡Hoy es Navidad! 🎁":d===1?"🎅 ¡Mañana es Navidad!":"🎅 Faltan "+d+" días para Navidad"};
@@ -348,57 +399,45 @@ function petSvg(k,sz,mood){
 (function(){
 const LS=localStorage,rd=k=>{try{return JSON.parse(LS.getItem(k)||"null")}catch(e){return null}},wr=(k,v)=>{try{LS.setItem(k,JSON.stringify(v))}catch(e){}};
 document.documentElement.dataset.theme=LS.getItem("ge_theme")||"light";
-const users=()=>rd("ge_users")||{},A=document.getElementById("auth"),enc=new TextEncoder();
+const users=()=>rd("ge_users")||{},A=document.getElementById("auth");
 const sess=LS.getItem("ge_sess"),U0=users();
 if(sess&&U0[sess]){const {ph,salt,rh,rsalt,...p}=U0[sess];window.ME={...p,id:sess};return}
 const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
-async function H(p,s){if(window.crypto&&crypto.subtle){const k=await crypto.subtle.importKey("raw",enc.encode(p),"PBKDF2",false,["deriveBits"]);return hex(await crypto.subtle.deriveBits({name:"PBKDF2",salt:enc.encode(s),iterations:150000,hash:"SHA-256"},k,256))}let h=5381;for(const c of s+p)h=(h*33^c.charCodeAt(0))>>>0;return"x"+h}
-const rnd=n=>hex(crypto.getRandomValues(new Uint8Array(n)));
+const rnd=n=>{try{return hex(crypto.getRandomValues(new Uint8Array(n)))}catch(e){return Math.random().toString(16).slice(2,2+n*2)}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const id0=e=>String(e).trim().toLowerCase(),v=i=>document.getElementById(i).value;
-function mkCode(){const al="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let c="";crypto.getRandomValues(new Uint8Array(16)).forEach((x,i)=>{c+=al[x%al.length];if(i%4===3&&i<15)c+="-"});return c}
+const v=i=>document.getElementById(i).value;
 const DV=[1,2,3,4,5,6,0],DN=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
-let view="login",code="",pend="";
+let view=Object.keys(U0).length?"pick":"reg";
 const err=m=>{const e=document.getElementById("amsg");if(e)e.textContent=m};
 const head=(t,s)=>`<div style="text-align:center;margin:26px 0 14px"><div style="display:flex;justify-content:center;width:100%;line-height:0">${logoSvg(76)}</div><h1>${t}</h1><div class="sub">${s}</div></div>`;
 const subRows=(n,old)=>Array.from({length:n},(_,i)=>{const o=old[i]||{n:"",d:2,x:"",t:10};return `<div style="margin-bottom:10px"><div class="row" style="margin-bottom:4px"><input class="asn grow" placeholder="Asignatura ${i+1}" value="${esc(o.n)}"><select class="asd" style="width:110px"><option value="1" ${o.d==1?"selected":""}>Fácil</option><option value="2" ${o.d==2?"selected":""}>Media</option><option value="3" ${o.d==3?"selected":""}>Difícil</option></select></div><div class="row" style="margin-bottom:4px"><span class="mu grow">📚 ¿Cuántos temas tiene?</span><input type="number" class="ast" min="1" max="200" value="${esc(o.t||10)}" style="width:80px"></div><div class="row"><span class="mu grow">📝 Próximo examen parcial (opcional)</span><input type="date" class="asx" value="${esc(o.x||"")}" style="width:150px"></div></div>`}).join("");
 function draw(){
   let h;
-  if(view==="login")h=head("Estud-IA","Inicia sesión para ver tu plan")+`<div class="card"><div class="al"><input id="ae" type="email" placeholder="Correo" autocomplete="username"><input id="ap" type="password" placeholder="Contraseña" autocomplete="current-password"><div id="amsg" class="mu" style="color:#ef4444"></div><button id="alog" data-p="1" class="big">Entrar</button><button class="g" data-v="reg">Crear cuenta</button><button class="g" data-v="forgot">¿Has olvidado tu contraseña?</button></div></div>`;
-  else if(view==="reg")h=head("Crear cuenta","Cuéntanos cómo estudias y te preparo el plan")+`<div class="card"><div class="al"><input id="an" placeholder="Tu nombre"><input id="ae" type="email" placeholder="Correo" autocomplete="username"><input id="ap" type="password" placeholder="Contraseña (mín. 6 caracteres)" autocomplete="new-password"><input id="as" placeholder="¿Qué estudias? (ej: Enfermería, 2º Bachillerato…)"><div><b>Días que estudias</b><div class="row" style="margin-top:6px">${DV.map(d=>`<label class="chip" style="padding:6px 10px"><input type="checkbox" class="adys" value="${d}" ${d>=1&&d<=5?"checked":""}> ${DN[d]}</label>`).join("")}</div></div><label><b>¿Cuántas asignaturas tienes?</b><input id="ans" type="number" min="1" max="12" value="4"></label><div><b>Tus asignaturas</b><div class="mu">Indica cuántos temas tiene cada una (para tu temario) y, si tiene un parcial próximo, su fecha: los días previos el plan se centrará sobre todo en ella.</div></div><div id="asubs">${subRows(4,[])}</div><label><b>Tiempo de estudio al día</b><select id="am">${[30,45,60,90,120,150,180,240,300].map(m=>`<option value="${m}" ${m===120?"selected":""}>${m>=60?(m/60).toString().replace(".5",",5")+" h":m+" min"}</option>`).join("")}</select></label><label><b>Fecha de tu examen final / fin de curso</b><input id="ax" type="date"></label><div class="mu">Es el final del plan. Los parciales se fechan arriba, asignatura por asignatura.</div><div id="amsg" class="mu" style="color:#ef4444"></div><button id="areg" data-p="1" class="big">Crear mi cuenta</button><button class="g" data-v="login">Ya tengo cuenta</button></div></div>`;
-  else if(view==="forgot")h=head("Recuperar contraseña","Usa el código de recuperación que te di al crear la cuenta")+`<div class="card"><div class="al"><input id="ae" type="email" placeholder="Correo"><input id="ac" placeholder="Código de recuperación (XXXX-XXXX-XXXX-XXXX)"><input id="ap" type="password" placeholder="Nueva contraseña" autocomplete="new-password"><div id="amsg" class="mu" style="color:#ef4444"></div><button id="afor" data-p="1" class="big">Cambiar contraseña</button><button class="g" data-v="login">Volver</button></div></div>`;
-  else h=head("¡Cuenta lista! 🎉","Guarda este código de recuperación")+`<div class="card"><div class="al"><div class="rc">${code}</div><div class="mu">Es la <b>única forma</b> de recuperar tu contraseña si la olvidas (esta web no envía correos). Guárdalo en tus notas o hazle una captura. Solo se muestra una vez.</div><button class="g" id="acopy">📋 Copiar código</button><button id="aok" class="big">Ya lo he guardado, entrar</button></div></div>`;
+  if(view==="pick"){const U=users();h=head("\u00bfQui\u00e9n eres?","Elige tu perfil para continuar. Tus datos se guardan en este navegador.")+`<div class="card"><div class="al">${Object.keys(U).map(id=>`<button class="big" data-id="${esc(id)}">${esc(U[id].name||"Perfil")}${U[id].study?` <span style="opacity:.7;font-weight:500">\u00b7 ${esc(U[id].study)}</span>`:""}</button>`).join("")}<button class="g" data-v="reg">\uff0b Crear un perfil nuevo</button></div></div>`}
+  else h=head("Crea tu perfil","Cuéntanos cómo estudias y te preparo el plan. Sin correo ni contraseña: todo se guarda en este navegador.")+`<div class="card"><div class="al"><input id="an" placeholder="Tu nombre" autocomplete="given-name"><input id="as" placeholder="¿Qué estudias? (ej: Enfermería, 2º Bachillerato…)"><div><b>Días que estudias</b><div class="row" style="margin-top:6px">${DV.map(d=>`<label class="chip" style="padding:6px 10px"><input type="checkbox" class="adys" value="${d}" ${d>=1&&d<=5?"checked":""}> ${DN[d]}</label>`).join("")}</div></div><label><b>¿Cuántas asignaturas tienes?</b><input id="ans" type="number" min="1" max="12" value="4"></label><div><b>Tus asignaturas</b><div class="mu">Indica cuántos temas tiene cada una (para tu temario) y, si tiene un parcial próximo, su fecha: los días previos el plan se centrará sobre todo en ella.</div></div><div id="asubs">${subRows(4,[])}</div><label><b>Tiempo de estudio al día</b><select id="am">${[30,45,60,90,120,150,180,240,300].map(m=>`<option value="${m}" ${m===120?"selected":""}>${m>=60?(m/60).toString().replace(".5",",5")+" h":m+" min"}</option>`).join("")}</select></label><label><b>Fecha de tu examen final / fin de curso</b><input id="ax" type="date"></label><div class="mu">Es el final del plan. Los parciales se fechan arriba, asignatura por asignatura.</div><div id="amsg" class="mu" style="color:#ef4444"></div><button id="areg" data-p="1" class="big">Empezar</button>${Object.keys(users()).length?`<button class="g" data-v="pick">Volver</button>`:""}</div></div>`;
   A.innerHTML=`<div class="in"><button class="g" id="athm" style="float:right;padding:8px 12px">🌓</button>${h}</div>`;
 }
-async function login(){const id=id0(v("ae")),u=users()[id];if(!u||await H(v("ap"),u.salt)!==u.ph)return err("Correo o contraseña incorrectos.");LS.setItem("ge_sess",id);location.reload()}
-async function reg(){
-  const id=id0(v("ae")),n=v("an").trim(),st=v("as").trim(),pw=v("ap"),days=[...A.querySelectorAll(".adys:checked")].map(x=>+x.value),sd=[...A.querySelectorAll(".asd")],sx=[...A.querySelectorAll(".asx")],st2=[...A.querySelectorAll(".ast")],ns=[...A.querySelectorAll(".asn")].map((x,i)=>({n:x.value.trim()||"Asignatura "+(i+1),d:+sd[i].value,x:sx[i]?sx[i].value:"",t:Math.max(1,Math.min(200,Math.round(+(st2[i]&&st2[i].value)||10)))})),mins=+v("am"),ex=v("ax"),d=new Date(),td=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-  if(!n||!st||!/^\S+@\S+\.\S+$/.test(id))return err("Rellena tu nombre, lo que estudias y un correo válido.");
-  if(pw.length<6)return err("La contraseña debe tener al menos 6 caracteres.");
-  if(users()[id])return err("Ya existe una cuenta con ese correo.");
-  if(!days.length)return err("Elige al menos un día de estudio.");
-  if(!ns.length)return err("Añade al menos una asignatura.");
+function reg(){
+  const n=v("an").trim(),st=v("as").trim(),days=[...A.querySelectorAll(".adys:checked")].map(x=>+x.value),sd=[...A.querySelectorAll(".asd")],sx=[...A.querySelectorAll(".asx")],st2=[...A.querySelectorAll(".ast")],ns=[...A.querySelectorAll(".asn")].map((x,i)=>({n:x.value.trim()||"Asignatura "+(i+1),d:+sd[i].value,x:sx[i]?sx[i].value:"",t:Math.max(1,Math.min(200,Math.round(+(st2[i]&&st2[i].value)||10)))})),mins=+v("am"),ex=v("ax"),d=new Date(),td=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  if(!n||!st)return err("Rellena tu nombre y lo que estudias.");
+  if(!days.length)return err("Elige al menos un d\u00eda de estudio.");
+  if(!ns.length)return err("A\u00f1ade al menos una asignatura.");
   if(!ex||ex<=td)return err("Pon una fecha de examen final futura.");
-  const bx=ns.find(q=>q.x&&q.x<td);if(bx)return err("El parcial de «"+bx.n+"» ya pasó: pon una fecha futura o déjalo vacío.");
-  const ax2=ns.find(q=>q.x&&q.x>ex);if(ax2)return err("El parcial de «"+ax2.n+"» es posterior a tu examen final.");
-  const salt=rnd(8),rsalt=rnd(8),rc=mkCode(),U=users();
-  U[id]={name:n,study:st,days,subs:ns,mins,exam:ex,salt,ph:await H(pw,salt),rsalt,rh:await H(rc.replace(/-/g,""),rsalt)};
-  wr("ge_users",U);code=rc;pend=id;view="code";draw();
-}
-async function forgot(){
-  const id=id0(v("ae")),u=users()[id],c=v("ac").toUpperCase().replace(/[^A-Z0-9]/g,""),pw=v("ap");
-  if(pw.length<6)return err("La nueva contraseña debe tener al menos 6 caracteres.");
-  if(!u||await H(c,u.rsalt)!==u.rh)return err("Correo o código de recuperación incorrectos.");
-  const salt=rnd(8),rsalt=rnd(8),rc=mkCode(),U=users();
-  Object.assign(U[id],{salt,ph:await H(pw,salt),rsalt,rh:await H(rc.replace(/-/g,""),rsalt)});wr("ge_users",U);code=rc;pend=id;view="code";draw();
+  const bx=ns.find(q=>q.x&&q.x<td);if(bx)return err("El parcial de \u00ab"+bx.n+"\u00bb ya pas\u00f3: pon una fecha futura o d\u00e9jalo vac\u00edo.");
+  const ax2=ns.find(q=>q.x&&q.x>ex);if(ax2)return err("El parcial de \u00ab"+ax2.n+"\u00bb es posterior a tu examen final.");
+  const U=users(),id="p"+Date.now().toString(36)+rnd(2);
+  U[id]={name:n,study:st,days,subs:ns,mins,exam:ex};
+  wr("ge_users",U);
+  if(!users()[id])return err("Tu navegador no deja guardar datos (\u00bfmodo privado?). Act\u00edvalos para poder usar la app.");
+  try{LS.setItem("ge_sess",id)}catch(e){return err("Tu navegador no deja guardar datos (\u00bfmodo privado?).")}
+  location.reload();
 }
 A.addEventListener("click",e=>{
   const t=e.target.closest("button");if(!t)return;
+  if(t.dataset.id){if(users()[t.dataset.id]){try{LS.setItem("ge_sess",t.dataset.id)}catch(_){}location.reload()}return}
   if(t.dataset.v){view=t.dataset.v;draw();return}
   if(t.id==="athm"){const n=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=n;try{LS.setItem("ge_theme",n)}catch(_){}return}
-  if(t.id==="alog")login();else if(t.id==="areg")reg();else if(t.id==="afor")forgot();
-  else if(t.id==="acopy"){try{navigator.clipboard.writeText(code);t.textContent="✓ Copiado"}catch(_){}}
-  else if(t.id==="aok"){LS.setItem("ge_sess",pend);location.reload()}
+  if(t.id==="areg")reg();
 });
 A.addEventListener("input",e=>{if(e.target.id!=="ans")return;const n=Math.max(1,Math.min(12,+e.target.value||1)),old=[...A.querySelectorAll(".asn")].map((x,i)=>({n:x.value,d:+A.querySelectorAll(".asd")[i].value,x:(A.querySelectorAll(".asx")[i]||{}).value||"",t:(A.querySelectorAll(".ast")[i]||{}).value||10}));document.getElementById("asubs").innerHTML=subRows(n,old)});
 A.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"){const b=A.querySelector("[data-p]");if(b)b.click()}});
@@ -419,7 +458,7 @@ let S={subs:ME.subs.map(s=>({n:s.n,d:s.d,x:s.x||"",t:s.t||20})),conf:ME.subs.map
 try{const x=JSON.parse(localStorage.getItem(K("eg2"))||"null");if(x&&x.subs)S=x}catch(e){}
 S.days=S.days||ME.days;S.mins=S.mins||ME.mins;
 const save=()=>{for(const k in KEYS){const h=hs(k);if(h!==LH[k]){LH[k]=h;S.ts[k]=Date.now()}}try{localStorage.setItem(K("eg2"),JSON.stringify(S))}catch(e){}sync()};
-S.topics=S.topics||[];S.exams=S.exams||[];S.agenda=S.agenda||{};S.sleep=S.sleep||{};S.sai=S.sai||{};S.routine=S.routine||{};const KEYS={study:["subs","conf","exam","mode","start","done","pend","quickDone","days","mins","frozen"],agenda:["agenda"],sleep:["sleep","sai"],exams:["exams"],fc:["fc","fcdel"],tem:["tem"]};
+S.topics=S.topics||[];S.exams=S.exams||[];S.agenda=S.agenda||{};S.sleep=S.sleep||{};S.sai=S.sai||{};S.routine=S.routine||{};S.tem=S.tem||{};S.flog=S.flog||{};const KEYS={study:["subs","conf","exam","mode","start","done","pend","quickDone","days","mins","frozen"],agenda:["agenda"],sleep:["sleep","sai"],exams:["exams"],fc:["fc","fcdel"],tem:["tem"]};
 const pick=ks=>{const o={};ks.forEach(k=>{if(S[k]!==undefined)o[k]=S[k]});return o};
 const pay=k=>pick(KEYS[k]),hs=k=>JSON.stringify(pick(KEYS[k].filter(x=>x!=="frozen")));
 S.gdel=S.gdel||[];
@@ -550,7 +589,7 @@ function coach(P){
   return `<div class="card"><h2>🧠 Tu coach</h2>${L.map(x=>`<div class="day">${x}</div>`).join("")}${prog(P)}${[].map((x,i)=>`<div style="margin:8px 0"><div class="row mu"><span class="grow">${esc(x.n)}</span>${Math.round(S.conf[i]/3*100)}%</div><div class="bar"><i style="width:${S.conf[i]/3*100}%;background:${COL[i]}"></i></div></div>`).join("")}</div>`;
 }
 function hoy(P){
-  const a=P[TODAY],g=new Date().getDay();let h=hero(P)+rate()+coach(P);
+  const a=P[TODAY],g=new Date().getDay();let h=hero(P)+rate()+coach(P)+FX.card();
   if(!a){
     h+=`<div class="card rest">${bear(96,!S.days.includes(g)?"sleep":"glasses")}<span class="e" style="display:none">${!S.days.includes(g)?"🛋️":"🎓"}</span>${!S.days.includes(g)?"Hoy es día de descanso. Recarga pilas, ¡te lo has ganado!":"No hay sesiones para hoy. Revisa la fecha del examen en Ajustes."}</div>`;
     const nx=Object.keys(P).find(k=>k>TODAY);
@@ -817,6 +856,7 @@ function vgV(){
    tile("dy","",`<div class="lb">😴 Sueño</div><div class="big">${sl?fh(slp(sl)).replace(" min","m"):"–"}</div><div class="lb">${sl?"anoche":"sin registrar"} · esta noche ~${rh} h</div>`)+
    tile("ts","",`<div class="lb">📝 Simulacros</div><div class="big">${ex?ex.score+"/"+ex.total:"–"}</div><div class="lb">${S.exams.length} hechos · ${S.topics.length} temas</div>`)+
    tile("tm","w2",`<div class="lb">🗂️ Temario</div>${S.subs.map((x,i)=>{const c=tmc(i);return `<div style="margin:6px 0"><div class="row" style="font-size:.8rem"><span class="grow">${esc(x.n)}</span><b>${c}/${NT(i)}</b></div>${bar(c/NT(i),COL[i])}</div>`}).join("")}`)+
+   tile("fo","w2",`<div class="lb">⏱ Modo Focus</div><div class="big">${FX.today()}</div><div class="lb">${FX.active()?"sesión en marcha · toca para verla":"hoy en focus · pomodoro 50/10 a tu aire"}</div>`)+
    tile("fc","w2",`<div class="lb">🃏 Flashcards</div><div class="big">${S.fc.filter(c=>c.due<=TODAY).length}</div><div class="lb">por repasar hoy · ${S.fc.length} tarjetas</div>`)+
    tile("dy","w2",`<div class="lb">🕐 Agenda de hoy · ${ag.length-pd.length}/${ag.length} hechas</div>${agIn}`)+
    `</div>`;
@@ -1039,7 +1079,7 @@ function brandRender(){
 }
 brandRender();
 let menuOpen=false;
-const TABS=[["vg","\ud83c\udfe0","General"],["hoy","\ud83c\udfaf","Hoy"],["dy","\ud83d\uddd3\ufe0f","Día"],["plan","\ud83d\udcc5","Plan"],["tm","\ud83d\uddc2\ufe0f","Temario"],["ap","\ud83d\udcda","Apuntes"],["ts","\ud83d\udcdd","Test"],["fc","\ud83c\udccf","Cartas"],["lg","\ud83c\udfc6","Logros"],["aj","\u2699\ufe0f","Ajustes"]];
+const TABS=[["vg","\ud83c\udfe0","General"],["hoy","\ud83c\udfaf","Hoy"],["fo","\u23f1\ufe0f","Focus"],["dy","\ud83d\uddd3\ufe0f","Día"],["plan","\ud83d\udcc5","Plan"],["tm","\ud83d\uddc2\ufe0f","Temario"],["ap","\ud83d\udcda","Apuntes"],["ts","\ud83d\udcdd","Test"],["fc","\ud83c\udccf","Cartas"],["lg","\ud83c\udfc6","Logros"],["aj","\u2699\ufe0f","Ajustes"]];
 function navRender(){
   const cur=TABS.find(x=>x[0]===tab)||TABS[0];
   const nv=document.getElementById("nav");
@@ -1060,10 +1100,10 @@ window.__redraw=function(){try{brandRender()}catch(e){}draw()};
 let SND="bell";try{SND=localStorage.getItem(K("egsnd"))||"bell"}catch(e){}
 const SNDS={bell:"Campanita",chime:"Chime suave",marimba:"Marimba",gong:"Gong",digital:"Digital",zen:"Cuenco zen"};
 function unlockAudio(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();AC.resume()}catch(e){}}
-function tone(f,t0,d,type,vol){const o=AC.createOscillator(),g=AC.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(vol,t0+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(AC.destination);o.start(t0);o.stop(t0+d+.05)}
-function ding(id){
+function tone(f,t0,d,type,vol){const o=AC.createOscillator(),g=AC.createGain();o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(vol,t0+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(AC.destination);if(window.__rec)window.__rec.push(o,g);o.start(t0);o.stop(t0+d+.05)}
+function ding(id,at){
   try{
-    unlockAudio();const t=AC.currentTime+.05,k=id||SND;
+    unlockAudio();const t=at!=null?at:AC.currentTime+.05,k=id||SND;
     if(k==="bell"){[0,.55].forEach(d=>{tone(880,t+d,1.8,"sine",.16);tone(2217,t+d,.9,"sine",.04)})}
     else if(k==="chime"){[1046.5,1318.5,1568].forEach((f,i)=>tone(f,t+i*.2,1.3,"sine",.13))}
     else if(k==="marimba"){[587.3,740,880,1174.7].forEach((f,i)=>tone(f,t+i*.14,.55,"triangle",.2))}
@@ -1075,6 +1115,7 @@ function ding(id){
 document.addEventListener("change",e=>{if(e.target.id==="snd"){SND=e.target.value;try{localStorage.setItem(K("egsnd"),SND)}catch(_){}ding(SND)}});
 function tcard(){
   const e=document.getElementById("tfloat");if(!e)return;
+  if(!tm&&FX.pill(e))return;
   document.body.classList.toggle("tm",!!tm);
   if(!tm){e.classList.add("hide");e.dataset.k="";return}
   const sig=tm.s+"|"+(tm.key||"q");
@@ -1334,7 +1375,7 @@ function planV(P){
 }
 function ajV(){
   const ai=aiCfg()||{p:"auto",k:"auto",m:""},aks=aiKeys(),au=ai.p==="auto";
-  return `<div class="card"><h2>👤 Cuenta</h2><div class="row"><span class="grow"><b>${esc(ME.name)}</b><br><span class="mu">${esc(ME.id)} · ${esc(STUDY)}</span></span><button class="g" id="logout">Cerrar sesión</button></div></div>
+  return `<div class="card"><h2>👤 Perfil</h2><div class="row"><span class="grow"><b>${esc(ME.name)}</b><br><span class="mu">${esc(STUDY)}</span></span><button class="g" id="logout">Cambiar de perfil</button></div></div>
   <div class="card"><h2>Ajustes ⚙️</h2>
   <div class="row" style="margin-bottom:12px"><label class="grow">Fecha del examen final / fin de curso</label><input type="date" id="ex" value="${S.exam}"></div>
   <div style="margin-bottom:12px">Días de estudio<div class="row" style="margin-top:6px">${[1,2,3,4,5,6,0].map(d=>`<label class="chip" style="padding:6px 10px"><input type="checkbox" class="dy" value="${d}" ${S.days.includes(d)?"checked":""}> ${DN[d]}</label>`).join("")}</div></div>
@@ -1357,9 +1398,9 @@ function ajV(){
   <input id="aik" type="password" placeholder="Pega tu clave API" value="${esc(au?"":ai.k)}" style="width:100%;margin-bottom:8px;${au?"display:none":""}">
   <input id="aim" placeholder="Modelo (déjalo vacío: elijo uno gratuito que funcione)" value="${esc(ai.m||"")}" style="width:100%;margin-bottom:8px;${au?"display:none":""}">
   <div class="row"><button id="aisave">Guardar</button><button class="g" id="aitest">Probar</button></div></div>
-  <div class="card"><h2>💾 Copia de seguridad</h2><div class="sub">Tus datos viven en este navegador. Descarga una copia para no perderlos o para pasarlos a otro dispositivo (no incluye la clave de IA).</div>
+  <div class="card"><h2>💾 Copia de seguridad</h2><div class="sub">Sin cuenta, tus datos viven solo en este navegador: si borras los datos del navegador o cambias de dispositivo se pierden. Descarga una copia para no perderlos o para pasarlos a otro dispositivo (no incluye la clave de IA).</div>
   <div class="row"><button class="g" id="bkx">⬇ Descargar copia</button><label class="g" style="padding:10px 16px;border:1px solid var(--bd);border-radius:14px;cursor:pointer;color:var(--p);font-weight:600">⬆ Restaurar<input type="file" id="bki" accept=".json" style="display:none"></label></div></div>
-  <div class="card" style="text-align:center"><div style="display:flex;justify-content:center;line-height:0;margin-bottom:8px">${logoSvg(48)}</div><h2 style="margin:0 0 2px">Estud-IA</h2><div class="mu">Versión ${EV.v} · By ${EV.by}</div><div class="mu" style="margin-top:10px;font-size:.8rem">Novedades de la ${EV.v}: nuevo diseño, menús animados y modo navideño 🎄</div></div>`;
+  <div class="card" style="text-align:center"><div style="display:flex;justify-content:center;line-height:0;margin-bottom:8px">${logoSvg(48)}</div><h2 style="margin:0 0 2px">Estud-IA</h2><div class="mu">Versión ${EV.v} · By ${EV.by}</div><div class="mu" style="margin-top:10px;font-size:.8rem">Novedades de la ${EV.v}: sin cuenta ni contraseña (todo en tu navegador), Modo Focus ⏱, nuevo diseño y modo navideño 🎄</div></div>`;
 }
 function tcardOld(){
   const c=document.getElementById("tcard");if(!c||!tm)return;
@@ -1421,8 +1462,7 @@ function lgV(){
 }
 function draw0(){
   const P=plan(),a=document.getElementById("app");
-  a.innerHTML=tab==="vg"?vgV():tab==="hoy"?hoy(P):tab==="plan"?planV(P):tab==="tm"?tmV():tab==="dy"?dyV():tab==="fc"?fcV():tab==="ap"?apV():tab==="ts"?tsV():tab==="lg"?lgV():ajV();
-  document.getElementById("nav").innerHTML=[["vg","🏠","General"],["hoy","🎯","Hoy"],["dy","🗓","Día"],["plan","📅","Plan"],["ap","📚","Apuntes"],["ts","📝","Test"],["fc","🃏","Cartas"],["aj","⚙️","Ajustes"]].map(x=>`<button data-tab="${x[0]}" class="${tab===x[0]?"on":""}"><span>${x[1]}</span>${x[2]}</button>`).join("");
+  a.innerHTML=tab==="vg"?vgV():tab==="hoy"?hoy(P):tab==="fo"?FX.view(P):tab==="plan"?planV(P):tab==="tm"?tmV():tab==="dy"?dyV():tab==="fc"?fcV():tab==="ap"?apV():tab==="ts"?tsV():tab==="lg"?lgV():ajV();
   tcard();
   try{medalCheck(P)}catch(e){}
 }
@@ -1505,9 +1545,9 @@ document.addEventListener("click",e=>{
   if(t.dataset.exdel){if(ask("e"+t.dataset.exdel)){S.exams.splice(+t.dataset.exdel,1);save();draw()}return}
   if(t.dataset.ex){const x=S.exams[+t.dataset.ex];if(x&&x.q)pdfExam(x.q,x.date,x.names);return}
   if(t.dataset.r){const i=S.pend;if(i!=null)S.conf[i]=Math.round((S.conf[i]*.7+.3*(+t.dataset.r))*100)/100;S.pend=null;save();draw();return}
-  if(t.dataset.q){unlockAudio();tm={end:Date.now()+600000,s:+t.dataset.q,key:null};draw();return}
+  if(t.dataset.q){if(FX.active()){toast("Tienes un Focus en marcha: termínalo antes.");return}unlockAudio();tm={end:Date.now()+600000,s:+t.dataset.q,key:null};draw();return}
   if(t.dataset.k){const k=t.dataset.k;if(S.done[k])delete S.done[k];else{finish(k,t);return}save();draw();return}
-  if(t.dataset.t!==undefined){const x=P[TODAY][+t.dataset.t];unlockAudio();tm={end:Date.now()+x.len*60000,s:x.s,key:x.key};draw();return}
+  if(t.dataset.t!==undefined){if(FX.active()){toast("Tienes un Focus en marcha: termínalo antes.");return}const x=P[TODAY][+t.dataset.t];unlockAudio();tm={end:Date.now()+x.len*60000,s:x.s,key:x.key};draw();return}
   if(t.id==="tx"){tm=null;draw();return}
   if(t.id==="gadd"){const m=+document.getElementById("gm").value,d=document.getElementById("gd").value;if(m>0&&d){S.gym.push({date:d,min:m,id:Date.now()+(++uid)});save();boom(t,["💪","🔥","🏆"]);setTimeout(draw,500)}return}
   if(t.id==="gst"){if(gt){const m=Math.max(1,Math.round((Date.now()-gt)/6e4));gt=null;draw();document.getElementById("gm").value=m}else{gt=Date.now();draw()}return}
@@ -1520,7 +1560,239 @@ document.addEventListener("click",e=>{
     S.days=dys;S.mins=mn;S.exam=ne;S.mode=nm;save();tab="hoy";draw();boom(t,["✅","✨"]);return}
   if(t.id==="rs"){if(ask("rs")){S.done={};S.frozen={};S.conf=S.subs.map(()=>1.5);S.pend=null;S.start=TODAY;save();draw()}}
 });
+/* ===== MODO FOCUS (pomodoro 50/10 libre, compatible con los bloques) ===== */
+const FX=(function(){
+  const $=i=>document.getElementById(i),TT0=document.title,HB=K("ge_fhb");
+  const DEF={s:0,tp:[],min:120,auto:true,sb:"chime",sw:"marimba"};
+  const FO=()=>{const o=S.fo=S.fo||{};for(const k in DEF)if(o[k]===undefined)o[k]=Array.isArray(DEF[k])?[]:DEF[k];if(o.s>=S.subs.length)o.s=S.subs.length?0:-1;return o};
+  const act=()=>{const F=S.fs;return F&&!F.end?F:null};
+  const hm=m=>{m=Math.round(m);const h=Math.floor(m/60),r=m%60;return h?h+" h"+(r?" "+r+" min":""):r+" min"};
+  const clk=ts=>{const d=new Date(ts);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
+  const mmss=ms=>{const t=Math.max(0,Math.ceil(ms/1000));return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+  const RC=2*Math.PI*108;
+  let FLp=Date.now(),FLw=0,FN=[],FSF=-1,WL=null,Q=false;
+  try{const h=+localStorage.getItem(HB);if(h)FLp=h}catch(e){}
+
+  /* pomodoros: bloques de 50 min con 10 de descanso; un resto pequeño se suma al último bloque */
+  function segs(min){
+    const out=[];let left=Math.max(10,Math.round(min));
+    while(left>0){
+      let w=left>=50?50:left;
+      if(left-w>0&&left-w<15)w=left;
+      out.push({k:"w",d:w});left-=w;
+      if(left>0)out.push({k:"b",d:10});
+    }
+    return out;
+  }
+  function pos(F,now){
+    const sg=F.sg,el=Math.max(0,(F.pa||now)-F.t0-(F.pd||0));let acc=0,wk=0;
+    for(let i=0;i<sg.length;i++){
+      const d=sg[i].d*6e4;
+      if(el<acc+d){if(sg[i].k==="w")wk+=el-acc;return{i,rem:acc+d-el,el,acc,d,wk:wk/6e4}}
+      if(sg[i].k==="w")wk+=d;acc+=d;
+    }
+    const L=sg.length-1;return{i:L,done:true,rem:0,el,acc,d:sg[L].d*6e4,wk:wk/6e4};
+  }
+
+  /* audio: se programa el aviso con antelación en el reloj de audio y, si no suena, lo toca el temporizador */
+  function unsched(){FN.forEach(n=>{try{n.stop&&n.stop(0)}catch(e){}try{n.disconnect&&n.disconnect()}catch(e){}});FN=[];FSF=-1}
+  function sched(){
+    unsched();const F=act();if(!F||F.pa||!AC||AC.state!=="running")return;
+    const p=pos(F,Date.now());if(p.done)return;
+    const nk=p.i+1<F.sg.length?F.sg[p.i+1].k:"e",o=FO(),id=nk==="b"?o.sb:nk==="w"?o.sw:SND;
+    const rec=[];window.__rec=rec;try{ding(id,AC.currentTime+p.rem/1000)}catch(e){}window.__rec=null;
+    FN=rec;FSF=p.i;
+  }
+  async function wl(on){try{if(on&&"wakeLock" in navigator&&!WL){WL=await navigator.wakeLock.request("screen");WL.addEventListener("release",()=>{WL=null})}else if(!on&&WL){await WL.release();WL=null}}catch(e){}}
+
+  /* ---------- vistas ---------- */
+  const opts=v=>Object.keys(SNDS).map(k=>`<option value="${k}" ${v===k?"selected":""}>${SNDS[k]}</option>`).join("");
+  function chips(){
+    const o=FO(),i=o.s;if(i<0||!S.subs[i])return '<div class="mu">Estudio libre: sin asignatura ni temas.</div>';
+    const m=S.tem[i]||{};let h="";
+    for(let n=1;n<=NT(i);n++)h+=`<button class="fchip ${o.tp.includes(n)?"on":""} ${m[n]?"dn":""}" data-fot="${n}" aria-pressed="${o.tp.includes(n)}" aria-label="Tema ${n}${m[n]?" (ya estudiado)":""}">${n}</button>`;
+    return h;
+  }
+  function prev(){
+    const o=FO(),sg=segs(o.min),tot=sg.reduce((a,b)=>a+b.d,0),pm=sg.filter(x=>x.k==="w").length,br=sg.filter(x=>x.k==="b").length*10;
+    return `${pm} pomodoro${pm>1?"s":""} · ${br} min de descanso · terminas sobre las ${clk(Date.now()+tot*6e4)}`;
+  }
+  function setup(P){
+    const o=FO(),a=P[TODAY]||[],mn=(S.flog&&S.flog[TODAY])||0;
+    return `<div class="card hero fo-hero"><h1>${bear(36,"glasses")} Modo Focus</h1><div class="sub">Sin bloques ni agenda: eliges qué estudiar y cuánto, das a empezar y yo me ocupo de los descansos (pomodoro 50/10).</div>${mn?`<div class="chip" style="background:#ffffff26;color:#fff">⏱ Hoy llevas ${hm(mn)} en focus</div>`:""}</div>
+    <div class="card"><h2>¿Qué vas a estudiar?</h2>
+      <select id="fo-s" style="width:100%;margin-bottom:12px" aria-label="Asignatura">${S.subs.map((x,i)=>`<option value="${i}" ${o.s===i?"selected":""}>${esc(x.n)}</option>`).join("")}<option value="-1" ${o.s<0?"selected":""}>Estudio libre (sin asignatura)</option></select>
+      <div class="row" style="margin-bottom:8px"><b class="grow" style="font-size:.9rem">Temas <span class="mu" style="font-weight:400">(opcional)</span></b><button class="g" data-fosel="pend" style="padding:6px 12px">Los que faltan</button><button class="g" data-fosel="none" style="padding:6px 12px">Ninguno</button></div>
+      <div class="fchips" id="fo-ch">${chips()}</div>
+      <div class="mu" style="margin-top:10px">Al terminar te propongo marcarlos como estudiados en el Temario.</div></div>
+    <div class="card"><h2>¿Cuánto tiempo?</h2>
+      <div class="ftime"><button class="g" data-fom="-30" aria-label="30 minutos menos">−</button><div style="text-align:center"><div class="fb" id="fo-big">${hm(o.min)}</div><small>de estudio efectivo</small></div><button class="g" data-fom="30" aria-label="30 minutos más">+</button></div>
+      <div class="row" style="justify-content:center;margin-top:14px">${[60,120,180,240,300].map(m=>`<button class="g fq ${o.min===m?"on":""}" data-fom="=${m}">${m/60} h</button>`).join("")}</div>
+      <div class="fprev" id="fo-pv">${prev()}</div></div>
+    ${a.length?`<div class="card"><div class="row"><span class="grow"><b>Dar por hechos los bloques de hoy</b><br><span class="mu">Al terminar el focus, tus ${a.length} bloques del plan quedan completados.</span></span><button class="xsw ${o.auto?"on":""}" id="fo-auto" role="switch" aria-checked="${o.auto}" aria-label="Dar por hechos los bloques de hoy"><i></i></button></div></div>`:`<div class="card mu">Hoy no tienes bloques en el plan: el focus cuenta igualmente como tiempo de estudio.</div>`}
+    <div class="card"><h2>Avisos sonoros</h2>
+      <div class="row" style="margin-bottom:10px"><span class="grow">☕ Empieza el descanso</span><select id="fo-sb" aria-label="Sonido al empezar el descanso">${opts(o.sb)}</select><button class="g" data-fosnd="sb" style="padding:8px 12px" aria-label="Probar">▶</button></div>
+      <div class="row"><span class="grow">🔔 Termina el descanso</span><select id="fo-sw" aria-label="Sonido al terminar el descanso">${opts(o.sw)}</select><button class="g" data-fosnd="sw" style="padding:8px 12px" aria-label="Probar">▶</button></div></div>
+    <button class="big" id="fo-go" style="width:100%">▶ Empezar focus</button>`;
+  }
+  function lab(F,p,now){
+    const brk=F.sg[p.i].k==="b";
+    if(brk)return{ph:"Descanso",l:"vuelves a estudiar a las "+clk(now+p.rem),tip:"Levántate, bebe agua, estira y mira a lo lejos 💧"};
+    const w=F.sg.filter(x=>x.k==="w").length,n=F.sg.slice(0,p.i+1).filter(x=>x.k==="w").length,last=p.i===F.sg.length-1;
+    return{ph:"Pomodoro "+n+" de "+w,l:(last?"hasta el final · ":"hasta el descanso · ")+clk(now+p.rem),tip:"Un solo objetivo. El móvil, lejos 📵"};
+  }
+  const topTxt=a=>a.length===1?"Tema "+a[0]:"Temas "+(a.length>3?a[0]+"–"+a[a.length-1]+" ("+a.length+")":a.join(", "));
+  function ctl(F,p){
+    if(Q)return `<div class="fo-q">¿Terminar la sesión ahora?</div><button class="fo-main" id="fo-yes">Sí, terminar</button><button id="fo-no">Seguir</button>`;
+    const brk=F.sg[p.i].k==="b";
+    return `<button class="fo-main" id="fo-pa">${F.pa?"▶ Seguir":"⏸ Pausar"}</button>${brk&&!F.pa?`<button id="fo-sk">⏭ Saltar descanso</button>`:""}<button id="fo-en">⏹ Terminar</button>`;
+  }
+  function run(F){
+    const now=Date.now(),p=pos(F,now),L=lab(F,p,now),brk=F.sg[p.i].k==="b",sb=F.s>=0&&S.subs[F.s]?S.subs[F.s].n:"Estudio libre";
+    const base=F.t0+(F.pd||0)+(F.pa?now-F.pa:0);let acc=0;
+    const tl=F.sg.map((x,i)=>{const st=base+acc*6e4;acc+=x.d;return `<div class="${i<p.i?"dn":i===p.i?"cur":""}"><span class="mu fo-clk">${clk(st)}</span><span class="grow">${x.k==="w"?"📖 Estudio · "+x.d+" min":"☕ Descanso · "+x.d+" min"}</span>${i<p.i?"<span>✓</span>":i===p.i?"<span class=\"fo-now\">ahora</span>":""}</div>`}).join("")+`<div><span class="mu fo-clk">${clk(base+acc*6e4)}</span><span class="grow">🏁 Fin de la sesión</span></div>`;
+    return `<div class="card hero fo-run ${brk?"brk":""} ${F.pa?"pau":""}" id="fo-card"><div class="fo-fx"></div>
+      <div class="fo-ph" id="fo-ph" aria-live="polite">${L.ph}${F.pa?" · en pausa":""}</div><div class="fo-who">${esc(sb)}${F.tp.length?" · "+topTxt(F.tp):""}</div>
+      <div class="fo-ringw"><svg viewBox="0 0 240 240" aria-hidden="true"><circle class="fo-tr" cx="120" cy="120" r="108"/><circle class="fo-pr" id="fo-pr" cx="120" cy="120" r="108" stroke-dasharray="${RC}" stroke-dashoffset="${RC*(1-(p.d-p.rem)/p.d)}"/></svg><div class="fo-orb"></div><div class="fo-c"><div class="fo-t" id="fo-t" role="timer">${mmss(p.rem)}</div><div class="fo-l" id="fo-l">${F.pa?"En pausa":L.l}</div></div></div>
+      <div class="fo-tip">${L.tip}</div>${!AC||AC.state!=="running"?`<button class="fo-snd" id="fo-snd">\ud83d\udd08 Toca aqu\u00ed para activar los avisos sonoros</button>`:""}
+      <div class="bar fo-bar"><i id="fo-bar" style="width:${Math.min(100,p.wk/F.mn*100).toFixed(1)}%"></i></div><div class="fo-st" id="fo-st">Llevas ${hm(p.wk)} de ${hm(F.mn)} de estudio</div>
+      <div class="row fo-ctl" id="fo-ctl">${ctl(F,p)}</div></div>
+    <div class="card"><h2>Tu sesión</h2><div class="ftl">${tl}</div></div>`;
+  }
+  function endV(F,P){
+    const E=F.end,a=P[TODAY]||[],pend=a.filter(x=>!S.done[x.key]).length;
+    return `<div class="card hero fo-hero"><h1>${E.early?bear(36,"glasses")+" Sesión terminada":"🎉 ¡Focus completado!"}</h1><div class="sub">${E.early?"Has parado antes de tiempo, pero lo estudiado cuenta.":"Pomodoros hechos, descansos cumplidos. ¡Muy bien!"}</div>
+      <div class="row"><div class="stat"><b>${hm(E.st)}</b><span>de estudio</span></div><div class="stat"><b>${E.pm}</b><span>pomodoro${E.pm>1?"s":""}</span></div></div></div>
+    ${E.mk?`<div class="card fo-ok">✅ He dado por hechos los <b>${E.mk} bloques</b> de hoy.</div>`:pend>0?`<div class="card"><h2>Bloques de hoy</h2><div class="sub">Tienes ${pend} bloque${pend>1?"s":""} sin marcar en tu plan. ¿Los damos por hechos con este focus?</div><button id="fo-back">Marcar los ${pend} bloques como hechos</button></div>`:""}
+    ${E.all.length&&F.s>=0&&S.subs[F.s]?`<div class="card"><h2>Temas estudiados</h2><div class="sub">Toca los que hayas terminado de verdad: se marcan en tu Temario de ${esc(S.subs[F.s].n)}.</div><div class="fchips">${E.all.map(n=>`<button class="fchip ${E.tp.includes(n)?"on":""}" data-foek="${n}" aria-pressed="${E.tp.includes(n)}">${n}</button>`).join("")}</div></div>`:""}
+    <button class="big" id="fo-ok" style="width:100%">Listo</button>`;
+  }
+  function view(P){return S.fs?(S.fs.end?endV(S.fs,P):run(S.fs)):setup(P)}
+
+  /* ---------- acciones ---------- */
+  function start(){
+    if(tm){toast("Termina o cancela el bloque en curso antes de empezar un Focus.");return}
+    const o=FO();unlockAudio();
+    S.fs={t0:Date.now(),mn:o.min,s:o.s,tp:o.tp.slice(),auto:o.auto,sg:segs(o.min),pa:0,pd:0,al:0};
+    FLp=Date.now();Q=false;save();draw();window.scrollTo(0,0);wl(true);sched();
+    toast("⏱ ¡Focus en marcha! Primer pomodoro: "+S.fs.sg[0].d+" min");
+  }
+  function pause(F){
+    const now=Date.now();
+    if(F.pa){F.pd=(F.pd||0)+(now-F.pa);F.pa=0;unlockAudio();wl(true);save();draw();sched()}
+    else{F.pa=now;unsched();wl(false);save();draw()}
+  }
+  function skip(F){
+    const p=pos(F,Date.now());if(p.done||F.sg[p.i].k!=="b"||F.pa)return;
+    F.t0-=p.rem;F.al=p.i+1;save();unsched();draw();sched();
+  }
+  function mark(F){
+    const a=plan()[TODAY]||[];a.forEach(x=>{S.done[x.key]=1});
+    if(a.length){if(S.pend==null&&F.s>=0&&S.subs[F.s])S.pend=F.s;S.quickDone=TODAY}
+    return a.length;
+  }
+  function finish(early,gap,sk){
+    const F=act();if(!F)return;const now=Date.now(),p=pos(F,now),st=early?Math.round(p.wk):F.mn;
+    unsched();wl(false);Q=false;document.title=TT0;
+    if(early&&st<1){S.fs=null;save();draw();toast("Sesión cancelada");return}
+    const pm=early?F.sg.slice(0,p.i+1).filter(x=>x.k==="w").length:F.sg.filter(x=>x.k==="w").length;
+    const E=F.end={st,pm,early:!!early,mk:0,all:F.tp.slice(),tp:F.tp.slice()};
+    S.flog=S.flog||{};S.flog[TODAY]=(S.flog[TODAY]||0)+st;
+    /* solo se marcan los bloques solos si el fin se vio "en vivo"; si la app estuvo dormida se pregunta */
+    if(!early&&F.auto&&gap<=18e4)E.mk=mark(F);
+    save();
+    if(!early){if(!sk)ding(SND);try{navigator.vibrate&&navigator.vibrate([300,100,300,100,600])}catch(e){}toast("🎉 ¡Focus completado!")}
+    draw();window.scrollTo(0,0);if(!early)try{boom(document.body,["🎉","⭐","✨","🦷","💜"])}catch(e){}
+  }
+  function close(){
+    const F=S.fs;if(!F||!F.end)return;const E=F.end;
+    if(F.s>=0&&S.subs[F.s]&&E.tp.length){S.tem=S.tem||{};const m=S.tem[F.s]=S.tem[F.s]||{};E.tp.forEach(n=>{if(n<=NT(F.s)&&!m[n])m[n]=TODAY})}
+    S.fs=null;save();draw();window.scrollTo(0,0);toast(E.tp.length?"Temario actualizado ✔":"¡Sesión guardada!");
+  }
+  function ctlRender(){const F=act();if(!F)return;const e=$("fo-ctl");if(e)e.innerHTML=ctl(F,pos(F,Date.now()))}
+
+  function click(e){
+    const t=e.target.closest&&e.target.closest("button");if(!t)return false;const o=FO();
+    if(t.dataset.fot){const n=+t.dataset.fot,i=o.tp.indexOf(n);if(i<0)o.tp.push(n);else o.tp.splice(i,1);o.tp.sort((a,b)=>a-b);save();t.classList.toggle("on",i<0);t.setAttribute("aria-pressed",String(i<0));return true}
+    if(t.dataset.fosel){const i=o.s;if(t.dataset.fosel==="none"||i<0)o.tp=[];else{const m=S.tem[i]||{};o.tp=[];for(let n=1;n<=NT(i);n++)if(!m[n])o.tp.push(n)}save();$("fo-ch").innerHTML=chips();return true}
+    if(t.dataset.fom){const v=t.dataset.fom;o.min=v[0]==="="?+v.slice(1):Math.max(30,Math.min(720,o.min+ +v));save();$("fo-big").textContent=hm(o.min);$("fo-pv").textContent=prev();document.querySelectorAll(".fq").forEach(b=>b.classList.toggle("on",+b.dataset.fom.slice(1)===o.min));return true}
+    if(t.id==="fo-auto"){o.auto=!o.auto;save();t.classList.toggle("on",o.auto);t.setAttribute("aria-checked",String(o.auto));return true}
+    if(t.dataset.fosnd){unlockAudio();ding(o[t.dataset.fosnd]);return true}
+    if(t.id==="fo-go"){start();return true}
+    if(t.id==="fo-snd"){unlockAudio();setTimeout(()=>{sched();if(tab==="fo")draw()},120);return true}
+    const F=act();
+    if(t.id==="fo-pa"||t.id==="fpp"){if(F)pause(F);return true}
+    if(t.id==="fo-sk"){if(F)skip(F);return true}
+    if(t.id==="fo-en"){Q=true;ctlRender();return true}
+    if(t.id==="fo-no"){Q=false;ctlRender();return true}
+    if(t.id==="fo-yes"){finish(true,0,false);return true}
+    if(t.id==="fo-back"){const E=S.fs&&S.fs.end;if(E){E.mk=mark(S.fs);save();draw()}return true}
+    if(t.dataset.foek){const E=S.fs&&S.fs.end;if(E){const n=+t.dataset.foek,i=E.tp.indexOf(n);if(i<0)E.tp.push(n);else E.tp.splice(i,1);save();t.classList.toggle("on",i<0);t.setAttribute("aria-pressed",String(i<0))}return true}
+    if(t.id==="fo-ok"){close();return true}
+    return false;
+  }
+  document.addEventListener("click",click);
+  document.addEventListener("change",e=>{
+    const o=FO(),t=e.target;
+    if(t.id==="fo-s"){o.s=+t.value;o.tp=[];save();const c=$("fo-ch");if(c)c.innerHTML=chips()}
+    else if(t.id==="fo-sb"||t.id==="fo-sw"){o[t.id==="fo-sb"?"sb":"sw"]=t.value;save();unlockAudio();ding(t.value)}
+  });
+  document.addEventListener("pointerdown",()=>{if(act()&&(!AC||AC.state!=="running"||!FN.length)){unlockAudio();setTimeout(sched,80)}},{passive:true});
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){const F=act();if(F&&!F.pa)wl(true);tick()}});
+
+  /* ---------- tick (1 s) ---------- */
+  function ui(F,p,now){
+    const L=lab(F,p,now),set=(i,v)=>{const e=$(i);if(e&&e.textContent!==v)e.textContent=v};
+    set("fo-t",mmss(p.rem));set("fo-ph",L.ph+(F.pa?" · en pausa":""));set("fo-l",F.pa?"En pausa":L.l);
+    set("fo-st","Llevas "+hm(p.wk)+" de "+hm(F.mn)+" de estudio");
+    const r=$("fo-pr");if(r)r.style.strokeDashoffset=String(RC*(1-(p.d-p.rem)/p.d));
+    const b=$("fo-bar");if(b)b.style.width=Math.min(100,p.wk/F.mn*100).toFixed(1)+"%";
+  }
+  function tick(){
+    const F=act();
+    if(!F){if(!S.fs&&document.title!==TT0)document.title=TT0;return}
+    const now=Date.now(),gap=now-FLp;FLp=now;
+    if(now-FLw>15e3){FLw=now;try{localStorage.setItem(HB,String(now))}catch(e){}}
+    const p=pos(F,now),cur=p.done?F.sg.length:p.i,al=F.al||0;
+    if(!F.pa&&cur>al){
+      const sk=FSF===al&&!!AC&&AC.state==="running"&&FN.length>0;
+      FN=[];FSF=-1;F.al=cur;
+      if(p.done){finish(false,gap,sk);return}
+      const k=F.sg[cur].k;
+      if(!sk)ding(k==="b"?FO().sb:FO().sw);
+      toast(k==="b"?"☕ ¡Descanso de "+F.sg[cur].d+" min! Levántate y bebe agua":"🔔 ¡Se acabó el descanso! A por el siguiente pomodoro");
+      try{navigator.vibrate&&navigator.vibrate(k==="b"?[300,150,300]:[150,80,150,80,350])}catch(e){}
+      save();sched();draw();return;
+    }
+    ui(F,p,now);
+    document.title=(F.pa?"⏸ ":"⏱ ")+mmss(p.rem)+" · "+(F.sg[p.i].k==="b"?"Descanso":"Focus");
+    if(tab!=="fo")tcard();
+  }
+
+  /* ---------- píldora flotante y tarjetas ---------- */
+  function pill(e){
+    const F=S.fs;if(!F||tab==="fo")return false;
+    document.body.classList.add("tm");
+    const sig=F.end?"fe":"fr";
+    if(e.dataset.k!==sig){e.dataset.k=sig;e.innerHTML=F.end?`<span class="tfb">${bear(32,"glasses")}</span><div class="tfi"><div class="tfs">Focus terminado</div><div class="tft">🎉 ¡Hecho!</div></div><button class="g tfbt" data-tab="fo">Cerrar</button>`:`<span class="tfb">${bear(32,"glasses")}</span><div class="tfi"><div class="tfs" id="tfs"></div><div class="tft" id="tft"></div></div><button class="g tfbt" id="fpp"></button><button class="g tfbt" data-tab="fo" aria-label="Abrir Focus">↗</button>`}
+    e.classList.remove("hide");
+    if(!F.end){const now=Date.now(),p=pos(F,now);if(!p.done){const brk=F.sg[p.i].k==="b";$("tfs").textContent=(brk?"☕ Descanso":"📖 "+lab(F,p,now).ph)+(F.pa?" · pausa":"");$("tft").textContent=mmss(p.rem);$("fpp").textContent=F.pa?"▶":"⏸"}}
+    return true;
+  }
+  const today=()=>{if(act())return "En marcha";const m=(S.flog&&S.flog[TODAY])||0;return m?hm(m):"–"};
+  function card(){
+    const F=S.fs;
+    if(F&&!F.end){const p=pos(F,Date.now());return `<div class="card"><div class="row"><span class="grow"><b>⏱ Focus en marcha</b><br><span class="mu">${p.done?"Terminando…":(F.sg[p.i].k==="b"?"Descanso":"Estudiando")+" · quedan "+mmss(p.rem)}</span></span><button data-tab="fo">Ver</button></div></div>`}
+    if(F&&F.end)return `<div class="card"><div class="row"><span class="grow"><b>⏱ Focus terminado</b><br><span class="mu">Ciérralo para guardar tus temas.</span></span><button data-tab="fo">Abrir</button></div></div>`;
+    return `<div class="card"><div class="row"><span class="grow"><b>⏱ Modo Focus</b><br><span class="mu">¿Hoy prefieres estudiar a tu aire? Elige temas y horas y yo pongo el pomodoro 50/10.</span></span><button class="g" data-tab="fo">Abrir</button></div></div>`;
+  }
+  /* si se recarga con una sesión en marcha */
+  try{if(act()){FLp=Math.min(FLp,Date.now());wl(true)}}catch(e){}
+  return{view,tick,pill,card,today,active:()=>!!act(),has:()=>!!S.fs};
+})();
+
 setInterval(()=>{
+  try{FX.tick()}catch(e){console.error(e)}
   if(tm){if(!tm.p&&Date.now()>=tm.end){ding();toast("¡Bloque terminado! 🎉");try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}const k=tm.key;if(k)finish(k,null);else{tm=null;S.quickDone=TODAY;save();draw()}boom(document.body,["🎉","⭐","✨"]);}else tcard()}
   if(gt&&tab==="gym"){const b=document.getElementById("gst");if(b)b.textContent="⏹ Parar ("+Math.max(1,Math.round((Date.now()-gt)/6e4))+" min)"}
 },1000);
