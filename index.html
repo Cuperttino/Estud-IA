@@ -526,7 +526,7 @@ function draw(){
   let h;
   if(view==="pick"){const U=users();h=head("\u00bfQui\u00e9n eres?","Elige tu perfil para continuar. Tus datos se guardan en este navegador.")+`<div class="card"><div class="al">${Object.keys(U).map(id=>`<button class="big" data-id="${esc(id)}">${esc(U[id].name||"Perfil")}${U[id].study?` <span style="opacity:.7;font-weight:500">\u00b7 ${esc(U[id].study)}</span>`:""}</button>`).join("")}<button class="g" data-v="reg">\uff0b Crear un perfil nuevo</button></div></div>`}
   else h=head("Crea tu perfil","Cuéntanos cómo estudias y te preparo el plan. Sin correo ni contraseña: todo se guarda en este navegador.")+`<div class="card"><div class="al"><input id="an" placeholder="Tu nombre" autocomplete="given-name"><input id="as" placeholder="¿Qué estudias? (ej: Enfermería, 2º Bachillerato…)"><div><b>Días que estudias</b><div class="row" style="margin-top:6px">${DV.map(d=>`<label class="chip" style="padding:6px 10px"><input type="checkbox" class="adys" value="${d}" ${d>=1&&d<=5?"checked":""}> ${DN[d]}</label>`).join("")}</div></div><label><b>¿Cuántas asignaturas tienes?</b><input id="ans" type="number" min="1" max="12" value="4"></label><div><b>Tus asignaturas</b><div class="mu">Indica cuántos temas tiene cada una (para tu temario) y, si tiene un parcial próximo, su fecha: los días previos el plan se centrará sobre todo en ella.</div></div><div id="asubs">${subRows(4,[])}</div><label><b>Tiempo de estudio al día</b><select id="am">${[30,45,60,90,120,150,180,240,300].map(m=>`<option value="${m}" ${m===120?"selected":""}>${m>=60?(m/60).toString().replace(".5",",5")+" h":m+" min"}</option>`).join("")}</select></label><label><b>Fecha de tu examen final / fin de curso</b><input id="ax" type="date"></label><div class="mu">Es el final del plan. Los parciales se fechan arriba, asignatura por asignatura.</div><div id="amsg" class="mu" style="color:#ef4444"></div><button id="areg" data-p="1" class="big">Empezar</button>${Object.keys(users()).length?`<button class="g" data-v="pick">Volver</button>`:""}</div></div>`;
-  A.innerHTML=`<div class="in"><button class="g" id="athm" style="float:right;padding:8px 12px">🌓</button>${h}</div>`;
+  A.innerHTML=`<div class="in"><button class="g" id="athm" style="float:right;padding:8px 12px">🌓</button>${h}<div style="text-align:center;margin-top:14px"><button class="g" id="acloud">☁ Traer mis datos de Puter</button><div class="mu" id="acm" style="margin-top:8px"></div><div id="acl"></div></div></div>`;
 }
 function reg(){
   const n=v("an").trim(),st=v("as").trim(),days=[...A.querySelectorAll(".adys:checked")].map(x=>+x.value),sd=[...A.querySelectorAll(".asd")],sx=[...A.querySelectorAll(".asx")],st2=[...A.querySelectorAll(".ast")],ns=[...A.querySelectorAll(".asn")].map((x,i)=>({n:x.value.trim()||"Asignatura "+(i+1),d:+sd[i].value,x:sx[i]?sx[i].value:"",t:Math.max(1,Math.min(200,Math.round(+(st2[i]&&st2[i].value)||10)))})),mins=+v("am"),ex=v("ax"),d=new Date(),td=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -549,10 +549,34 @@ A.addEventListener("click",e=>{
   if(t.dataset.v){view=t.dataset.v;draw();return}
   if(t.id==="athm"){const n=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=n;try{LS.setItem("ge_theme",n)}catch(_){}return}
   if(t.id==="areg")reg();
+  if(t.id==="acloud")cloudList();
+  if(t.dataset.cl)cloudImport(t.dataset.cl);
 });
+let CL={};
+const lp=()=>new Promise((ok,no)=>{if(window.puter)return ok();const e=document.createElement("script");e.src="https://js.puter.com/v2/";e.onload=()=>window.puter?ok():no();e.onerror=()=>no();document.head.appendChild(e)});
+const acm=m=>{const e=document.getElementById("acm");if(e)e.textContent=m};
+async function cloudList(){
+  acm("Conectando con Puter…");
+  try{
+    await lp();if(!puter.auth.isSignedIn())await puter.auth.signIn();
+    const r=await puter.kv.list("estud-ia/profiles/*",true),arr=Array.isArray(r)?r:(r&&r.items)||[];CL={};
+    arr.forEach(x=>{try{CL[x.key.split("/").pop()]=JSON.parse(x.value)}catch(e){}});
+    const ids=Object.keys(CL);
+    if(!ids.length){acm("No hay datos sincronizados en esta cuenta de Puter todavía. Activa la sincronización en Ajustes desde tu otro dispositivo.");document.getElementById("acl").innerHTML="";return}
+    acm("Elige el perfil que quieres traer:");
+    document.getElementById("acl").innerHTML=ids.map(id=>`<button class="big" style="margin-top:8px;width:100%" data-cl="${esc(id)}">☁ ${esc(CL[id].name||"Perfil")} · ${esc(CL[id].study||"")}</button>`).join("");
+  }catch(e){acm("No se pudo conectar con Puter. Inténtalo otra vez.")}
+}
+function cloudImport(id){
+  const p=CL[id];if(!p)return;const U=users();
+  if(!U[id])U[id]={name:p.name,study:p.study,days:p.days,subs:p.subs,mins:p.mins,exam:p.exam};
+  wr("ge_users",U);
+  try{LS.setItem("ge_sync:"+id,"1");LS.setItem("ge_sess",id)}catch(e){return acm("Tu navegador no deja guardar datos.")}
+  location.reload();
+}
 A.addEventListener("input",e=>{if(e.target.id!=="ans")return;const n=Math.max(1,Math.min(12,+e.target.value||1)),old=[...A.querySelectorAll(".asn")].map((x,i)=>({n:x.value,d:+A.querySelectorAll(".asd")[i].value,x:(A.querySelectorAll(".asx")[i]||{}).value||"",t:(A.querySelectorAll(".ast")[i]||{}).value||10}));document.getElementById("asubs").innerHTML=subRows(n,old)});
 A.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"){const b=A.querySelector("[data-p]");if(b)b.click()}});
-A.classList.remove("hide");draw();
+A.classList.remove("hide");draw();lp().catch(()=>{});
 })();
 </script>
 <script>
@@ -1368,6 +1392,7 @@ function aiUsageCard(){
     h=`<div style="margin:14px 0 4px"><div class="row" style="font-size:.95rem"><b class="grow">Cuota mensual de Puter</b><span class="mu"><b>${pct==null?"–":pct+"%"}</b> usado</span></div><div class="bar" style="margin-top:6px"><i style="width:${pct||0}%;background:${col}"></i></div><div class="mu" style="margin-top:4px">${pct==null?"Consultando tu cuota…":"Se reinicia "+whenTxt(rs)}</div></div>`}
   return `<div class="card"><h2>📊 Uso de la IA</h2><div class="sub">Tu cuota real de Puter y cuándo se reinicia.</div>${h}</div>`;
 }
+
 async function use(n){
   const c=aiCfg();if(n!=="sample"||!c||!c.k)return Promise.resolve(null);
   const f=async p=>({text:await aiCall(p)});
@@ -1406,7 +1431,7 @@ async function pullOld(){
 const SY={busy:false,err:false,again:false};
 let TSY=new Set();try{TSY=new Set(JSON.parse(localStorage.getItem(K("egts"))||"[]"))}catch(e){}
 const svTSY=()=>{try{localStorage.setItem(K("egts"),JSON.stringify([...TSY]))}catch(e){}};
-function badge(){}
+function badge(){const e=document.getElementById("syst");if(e)e.textContent=syLabel()}
 function editing(){const a=document.activeElement;return a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)}
 const dm=(a,b,bn)=>bn?Object.assign({},a,b):Object.assign({},b,a);
 const gk=x=>String(x.id||x.date+"|"+x.min);
@@ -1430,7 +1455,7 @@ async function push(){
     for(const k in KEYS){const j=JSON.stringify({ts:S.ts[k]||0,d:pay(k)});if(PHS[k]!==j){await DB.doc(b+"d_"+k).set({json:j});PHS[k]=j}}
     for(const t of S.topics){const key=t.text.length+"|"+(t.summary||"").length+"|"+t.n+"|"+t.s+"|"+(t.info?JSON.stringify(t.info).length:0);if(lastT[t.id]!==key){await DB.doc(b+"t_"+t.id).set({json:JSON.stringify(t)});lastT[t.id]=key;TSY.add(t.id)}}
     for(const id in S.chats){const C=S.chats[id],key=C.u+"|"+C.m.length;if(LC[id]!==key){await DB.doc(b+"c_"+id).set({json:JSON.stringify(C)});LC[id]=key}}
-    svTSY();
+    svTSY();SY.t=Date.now();
   }catch(e){SY.err=true}
   SY.busy=false;badge();
   if(SY.again){SY.again=false;setTimeout(push,300)}
@@ -1464,6 +1489,63 @@ async function pull(){
 async function autoPull(){if(!DB||SY.busy||document.hidden)return;try{const ch=await pull();if(ch&&!editing())draw();sync()}catch(e){}}
 document.addEventListener("visibilitychange",()=>{if(!DB)return;if(document.hidden)push();else autoPull()});
 window.addEventListener("pagehide",()=>{if(DB)push()});
+/* ---- Sincronización entre dispositivos con la cuenta de Puter ---- */
+const SYP="estud-ia/",SYBIG=250000;
+function puterDB(){
+  const kv=()=>puter.kv,asArr=v=>Array.isArray(v)?v:(v&&v.items)||[];
+  const rmc=async path=>{try{const m=await kv().get(SYP+path);if(typeof m==="string"&&m.indexOf("@@")===0){const n=+m.slice(2)||0;for(let i=0;i<n;i++)await kv().del(SYP+path+"~"+i)}}catch(e){}};
+  return{
+    doc:path=>({
+      async set(o){const j=o.json;await rmc(path);if(j.length>SYBIG){const n=Math.ceil(j.length/SYBIG);for(let i=0;i<n;i++)await kv().set(SYP+path+"~"+i,j.slice(i*SYBIG,(i+1)*SYBIG));await kv().set(SYP+path,"@@"+n)}else await kv().set(SYP+path,j)},
+      async get(){const v=await kv().get(SYP+path);return{exists:v!=null,data:()=>({json:v})}},
+      async delete(){await rmc(path);await kv().del(SYP+path)}
+    }),
+    collection:path=>({async get(){
+      const pre=SYP+path+"/",all=asArr(await kv().list(pre+"*",true)),M={};
+      all.forEach(x=>{if(x&&x.key)M[x.key]=x.value});
+      const docs=[];
+      Object.keys(M).forEach(k=>{if(k.indexOf("~")>=0)return;let v=M[k];if(typeof v==="string"&&v.indexOf("@@")===0){const n=+v.slice(2)||0;let a="";for(let i=0;i<n;i++)a+=M[k+"~"+i]||"";v=a}const id=k.slice(pre.length),json=v;docs.push({id,data:()=>({json})})});
+      return{docs};
+    }})
+  };
+}
+SY.t=0;SY.on=false;
+const syOn=()=>{try{return localStorage.getItem(K("ge_sync"))==="1"}catch(e){return false}};
+function syLabel(){
+  if(!syOn())return "Desactivada";
+  if(!DB)return SY.msg||"Reconecta tu cuenta de Puter para sincronizar";
+  if(SY.err)return "⚠ No se pudo sincronizar. Se reintentará al guardar.";
+  if(SY.busy)return "Sincronizando…";
+  return "✓ Sincronizado"+(SY.t?" a las "+new Date(SY.t).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"}):"");
+}
+async function syAttach(){
+  DB=puterDB();UID=ME.id;SY.err=false;SY.busy=true;badge();
+  try{
+    await puter.kv.set(SYP+"profiles/"+ME.id,JSON.stringify({name:ME.name,study:ME.study,days:ME.days,subs:ME.subs,mins:ME.mins,exam:ME.exam}));
+    const ch=await pull();if(ch&&!editing())draw();
+    SY.busy=false;await push();SY.t=Date.now();
+  }catch(e){SY.err=true;SY.busy=false}
+  badge();if(tab==="aj"&&!editing())draw();
+}
+async function syStart(manual){
+  try{await loadPuter();if(manual)await puterAuth()}catch(e){if(manual)toast("No se pudo conectar con Puter. Inténtalo otra vez.");return false}
+  if(!puterIn()){SY.msg="Reconecta tu cuenta de Puter para sincronizar";badge();return false}
+  try{localStorage.setItem(K("ge_sync"),"1")}catch(e){}
+  await syAttach();return true;
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest&&e.target.closest("#syon,#synow,#syoff,#syre");if(!t)return;
+  if(t.id==="syoff"){try{localStorage.removeItem(K("ge_sync"))}catch(_){}DB=null;toast("Sincronización desactivada. Tus datos en la nube se conservan.");draw();return}
+  if(t.id==="synow"){if(!DB)return;t.disabled=true;await syAttach();toast(SY.err?"No se pudo sincronizar":"Sincronizado ✓");draw();return}
+  const ok=await syStart(true);if(ok){toast(SY.err?"Activada, pero hubo un error al sincronizar":"Sincronización activada ✓");draw()}
+});
+function syncCard(){
+  const on=syOn();
+  return `<div class="card"><h2>☁ Sincronizar entre dispositivos</h2><div class="sub">Gratis con tu cuenta de Puter: tus datos se guardan en tu cuenta y se actualizan en todos tus dispositivos. En el otro dispositivo, en la pantalla de perfiles, pulsa «Traer mis datos de Puter». Se suben tu plan, progreso, apuntes, tarjetas y chats (no tu clave de IA).</div>
+  <div class="mu" style="margin:6px 0 10px">Estado: <b id="syst">${esc(syLabel())}</b></div>
+  <div class="row">${on?(DB?'<button id="synow">Sincronizar ahora</button>':'<button id="syre">Reconectar Puter</button>')+'<button class="g" id="syoff">Desactivar</button>':'<button id="syon">☁ Activar sincronización</button>'}</div></div>`;
+}
+if(syOn()){loadPuter().then(()=>{if(puterIn())syAttach();else{SY.msg="Reconecta tu cuenta de Puter para sincronizar";badge()}}).catch(()=>{SY.msg="Sin conexión con Puter por ahora";badge()})}
 (function(){const e=document.getElementById("syn"),set=()=>{e.textContent=document.documentElement.dataset.theme==="dark"?"☀️":"🌙"};set();e.onclick=()=>{const t=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=t;try{localStorage.setItem("ge_theme",t)}catch(_){}set()}})();
 badge();
 const cln=s=>String(s).replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/[\u2013\u2014]/g,"-").replace(/\u2192/g,"->").replace(/\*\*/g,"").replace(/[^\u0000-\u00ff]/g,"");
@@ -1524,6 +1606,7 @@ function ajV(){
   <input id="aim" placeholder="Modelo (déjalo vacío: elijo uno gratuito que funcione)" value="${esc(ai.m||"")}" style="width:100%;margin-bottom:8px;${au?"display:none":""}">
   <div class="row"><button id="aisave">Guardar</button><button class="g" id="aitest">Probar</button></div></div>
   ${aiUsageCard()}
+  ${syncCard()}
   <div class="card"><h2>💾 Copia de seguridad</h2><div class="sub">Sin cuenta, tus datos viven solo en este navegador: si borras los datos del navegador o cambias de dispositivo se pierden. Descarga una copia para no perderlos o para pasarlos a otro dispositivo (no incluye la clave de IA).</div>
   <div class="row"><button class="g" id="bkx">⬇ Descargar copia</button><label class="g" style="padding:10px 16px;border:1px solid var(--bd);border-radius:14px;cursor:pointer;color:var(--p);font-weight:600">⬆ Restaurar<input type="file" id="bki" accept=".json" style="display:none"></label></div></div>
   <div class="card" style="text-align:center"><div style="display:flex;justify-content:center;line-height:0;margin-bottom:8px">${logoSvg(48)}</div><h2 style="margin:0 0 2px">Estud-IA</h2><div class="mu">Versión ${EV.v} · By ${EV.by}</div><div class="mu" style="margin-top:10px;font-size:.8rem">Novedades de la ${EV.v}: sin cuenta ni contraseña (todo en tu navegador), Modo Focus ⏱, nuevo diseño y modo navideño 🎄</div></div>`;
