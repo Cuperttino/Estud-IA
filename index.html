@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- Estud-IA v3.2.0 · By Cuperttino -->
+<!-- Estud-IA v3.3.0 · By Cuperttino -->
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Estud-IA · by Cuperttino</title>
-<meta name="author" content="Cuperttino"><meta name="application-name" content="Estud-IA"><meta name="version" content="3.2.0">
+<meta name="author" content="Cuperttino"><meta name="application-name" content="Estud-IA"><meta name="version" content="3.3.0">
 <style>
 :root{--bg:#f4f1ff;--card:#fff;--tx:#1b1530;--mu:#6b6585;--p:#7c3aed;--p2:#f472b6;--ok:#10b981;--bd:#e5defa;--hb:linear-gradient(135deg,#7c3aed,#db2777);--ht:#fff;--b1:#a78bfa55;--b2:#f9a8d455;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 :root[data-theme="dark"]{--bg:#15151b;--card:#1e1e26;--tx:#e6e6ec;--mu:#9696a6;--bd:#2c2c37;--p:#6f74a8;--p2:#4b4e72;--ok:#5f9c82;--hb:#262733;--ht:#e6e6ec;--b1:#3a3d5a22;--b2:#2a2c4018;color-scheme:dark}
@@ -478,6 +478,8 @@ button.xsw{width:52px;height:30px;min-height:0;padding:0;border-radius:999px;bac
 button.xsw::after{content:"";position:absolute;inset:-8px -2px}
 .xsw i{position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #0004;transition:transform .25s var(--ease)}
 .xsw.on{background:var(--p)}.xsw.on i{transform:translateX(22px)}
+.qdx{margin:10px 0 4px;padding:14px;border-radius:16px;background:color-mix(in srgb,var(--p) 7%,var(--card));border:1px solid color-mix(in srgb,var(--p) 22%,var(--bd));border-left:4px solid var(--p)}
+.qdx .md h2{font-size:1rem;margin:12px 0 6px}.qdx .md h2:first-child{margin-top:0}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#5b4bff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0d0c1b" media="(prefers-color-scheme: dark)">
@@ -508,7 +510,7 @@ const PETART={
   pig:`<g fill="#f49ab0" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"><path d="M26 44L16 14L50 28Z"/><path d="M94 44L104 14L70 28Z"/></g><ellipse cx="60" cy="62" rx="40" ry="36" fill="#f9bccb" stroke="#3b2a20" stroke-width="3"/><circle cx="30" cy="72" r="6" fill="#f2808f" opacity=".5"/><circle cx="90" cy="72" r="6" fill="#f2808f" opacity=".5"/><ellipse cx="60" cy="72" rx="17" ry="12.5" fill="#f58fa9" stroke="#3b2a20" stroke-width="2.5"/><ellipse cx="53.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/><ellipse cx="66.5" cy="72" rx="2.8" ry="4" fill="#9c3d5c"/>`,
   bird:`<path d="M50 30Q46 10 60 16Q64 2 72 18Q84 12 78 32Z" fill="#5fb4e6" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"/><g fill="#5fb4e6" stroke="#3b2a20" stroke-width="3"><ellipse cx="18" cy="72" rx="10" ry="18" transform="rotate(15 18 72)"/><ellipse cx="102" cy="72" rx="10" ry="18" transform="rotate(-15 102 72)"/></g><circle cx="60" cy="62" r="40" fill="#7ec8f0" stroke="#3b2a20" stroke-width="3"/><ellipse cx="60" cy="82" rx="26" ry="16" fill="#e6f6fd"/><circle cx="31" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><circle cx="89" cy="70" r="6" fill="#f2a7b5" opacity=".6"/><path d="M50 66Q60 62 70 66L60 82Z" fill="#ffb02e" stroke="#3b2a20" stroke-width="2.5" stroke-linejoin="round"/>`
 };
-window.EV={v:"3.2.0",by:"Cuperttino"};
+window.EV={v:"3.3.0",by:"Cuperttino"};
 try{document.documentElement.style.setProperty("--evtxt",JSON.stringify("Estud-IA \u00b7 v"+EV.v+" \u00b7 by "+EV.by))}catch(e){}
 function logoSvg(sz){sz=sz||32;const u="lg"+Math.random().toString(36).slice(2,7);return `<svg class="elogo" width="${sz}" height="${sz}" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c6bff"/><stop offset="1" stop-color="#3b2fc9"/></linearGradient></defs><rect width="64" height="64" rx="19" fill="url(#${u})"/><path d="M14 40c6-3 12-3 18 1 6-4 12-4 18-1V25c-6-3-12-3-18 1-6-4-12-4-18-1z" fill="#fff" fill-opacity=".95"/><path d="M32 26v15" stroke="#3b2fc9" stroke-width="2" stroke-linecap="round" opacity=".35"/><path class="spk2" d="M46 8l2.2 5.8L54 16l-5.8 2.2L46 24l-2.2-5.8L38 16l5.8-2.2z" fill="#f5b83d"/></svg>`}
 function petSvg(k,sz,mood){
@@ -900,7 +902,50 @@ function quizV(){
     return `<div class="card hero"><h1>${z.sc}/${z.q.length} ${r>=.8?"🏆":r>=.5?"👍":"💪"}</h1><div class="sub">${Math.round(r*100)}% de aciertos. He ajustado tu plan según el resultado.</div></div>
     <div class="card"><h2>Preguntas falladas (${miss.length})</h2>${miss.map(x=>`<div class="day"><b>${esc(x.q)}</b><div class="mu">Correcta: ${esc(x.o[x.a])}</div><div class="mu">${esc(x.e||"")}</div></div>`).join("")||"¡Ninguna! 🎉"}<div class="row" style="margin-top:12px"><button id="qpdf">⬇ PDF del examen</button><button class="g" id="qend">Volver</button></div></div>`}
   const x=z.q[z.i];
-  return `<div class="card"><div class="row mu"><span class="grow">Pregunta ${z.i+1}/${z.q.length}</span><span>✓ ${z.sc}</span><button class="g" id="qpdf" style="padding:4px 10px">⬇ PDF</button></div><div class="bar" style="margin:8px 0 14px"><i style="width:${z.i/z.q.length*100}%"></i></div><h2>${esc(x.q)}</h2>${x.o.map((o,j)=>`<button class="opt ${z.ans?(j===x.a?"ok":j===z.pk[z.i]?"no":""):""}" data-o="${j}" ${z.ans?"disabled":""}>${"ABCD"[j]}. ${esc(o)}</button>`).join("")}${z.ans?`<div class="mu" style="margin:8px 0">💡 ${esc(x.e||"")}</div><button id="qn">${z.i+1<z.q.length?"Siguiente →":"Ver resultado"}</button>`:""}</div>`;
+  return `<div class="card"><div class="row mu"><span class="grow">Pregunta ${z.i+1}/${z.q.length}</span><span>✓ ${z.sc}</span><button class="g" id="qpdf" style="padding:4px 10px">⬇ PDF</button></div><div class="bar" style="margin:8px 0 14px"><i style="width:${z.i/z.q.length*100}%"></i></div><h2>${esc(x.q)}</h2>${x.o.map((o,j)=>`<button class="opt ${z.ans?(j===x.a?"ok":j===z.pk[z.i]?"no":""):""}" data-o="${j}" ${z.ans?"disabled":""}>${"ABCD"[j]}. ${esc(o)}</button>`).join("")}${z.ans?`<div class="mu" style="margin:8px 0">💡 ${esc(x.e||"")}</div>${doubtV(z)}<button id="qn" style="width:100%;margin-top:10px">${z.i+1<z.q.length?"Siguiente →":"Ver resultado"}</button>`:""}</div>`;
+}
+
+/* ---- Tengo dudas: explicación detallada + truco para recordarlo ---- */
+function doubtCtx(x){
+  const T=S.topics.filter(t=>(qz.tids||[]).includes(t.id));if(!T.length)return"";
+  const norm=w=>w.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""),W=[...new Set(norm(x.q+" "+x.o[x.a]).split(/[^a-z0-9ñ]+/).filter(w=>w.length>=5))];
+  const P=[];T.forEach(t=>String(t.text||"").split(/\n+/).forEach(l=>{if(l.trim().length>40)P.push({t:t.n,l:l.trim().slice(0,1500)})}));
+  P.forEach(p=>{const n=norm(p.l);p.s=W.reduce((a,w)=>a+(n.includes(w)?1:0),0)});
+  let out="",n=0;P.filter(p=>p.s>0).sort((a,b)=>b.s-a.s).slice(0,8).forEach(p=>{if(n+p.l.length<6000){out+="- ("+p.t+") "+p.l+"\n";n+=p.l.length}});
+  return out;
+}
+function doubtV(z){
+  const d=(z.dd||{})[z.i];
+  if(!d)return `<div class="row" style="margin:6px 0"><button class="g" id="qd">🤔 Tengo dudas</button><span class="mu">Te lo explico con detalle y un truco para recordarlo.</span></div>`;
+  if(d.busy)return `<div class="qdx"><div class="mu">🤔 Preparando una explicación detallada… ⏳</div><div class="bar" style="margin-top:8px"><i style="width:100%;opacity:.5"></i></div></div>`;
+  if(d.err)return `<div class="qdx"><div class="mu">No pude generar la explicación (${esc(d.err)}).</div><button class="g" id="qd" style="margin-top:8px">↻ Reintentar</button></div>`;
+  return `<div class="qdx"><div class="md">${md(d.text)}</div></div>`;
+}
+async function qDoubt(){
+  const z=qz;if(!z||!z.ans)return;const i=z.i,x=z.q[i];z.dd=z.dd||{};
+  if(z.dd[i]&&z.dd[i].busy)return;
+  const sm=await use("sample");if(!sm){alert(NOAI);return}
+  z.dd[i]={busy:true};draw();
+  const ctx=doubtCtx(x),mine=z.pk[i],ok=mine===x.a;
+  const pr=`Eres un tutor paciente de ${STUDY}. Un alumno acaba de responder esta pregunta de un test y tiene dudas. Explícasela en español, de forma clara y DETALLADA, como si fuera nuevo en el tema.
+
+PREGUNTA: ${x.q}
+OPCIONES:
+${x.o.map((o,j)=>"ABCD"[j]+") "+o).join("\n")}
+RESPUESTA CORRECTA: ${"ABCD"[x.a]}) ${x.o[x.a]}
+EL ALUMNO ELIGIÓ: ${"ABCD"[mine]}) ${x.o[mine]} (${ok?"acertó":"falló"})
+${x.e?"EXPLICACIÓN BREVE DEL TEST: "+x.e+"\n":""}${ctx?"\nFRAGMENTOS RELEVANTES DE SUS APUNTES:\n"+ctx:""}
+Estructura tu respuesta en markdown con estos apartados:
+## Por qué es esa la correcta
+Explica el concepto con detalle y con tus palabras, paso a paso.
+## Por qué las otras no
+Una línea por cada opción incorrecta${ok?"":", explicando sobre todo el error de la que eligió el alumno"}.
+## Para recordarlo
+Un truco memorístico (regla, acrónimo, imagen mental o comparación) y 1-2 datos clave fáciles de recordar.
+Usa **negrita** en los conceptos clave. Basa la explicación en los apuntes cuando aparezcan; si no cubren algo, usa conocimiento fiable y di que no sale en sus apuntes. No inventes datos.`;
+  try{const r=await sm(pr);z.dd[i]={text:String(r.text||"").trim()||"No tengo nada que añadir."}}
+  catch(e){z.dd[i]={err:String((e&&e.code)||"error").slice(0,120)}}
+  if(qz===z)draw();
 }
 document.addEventListener("change",e=>{if(e.target.classList.contains("sk"))sel[e.target.value]=e.target.checked});
 document.addEventListener("change",async e=>{if(e.target.id!=="ovatt"||!e.target.files[0])return;const f=e.target.files[0],t=S.topics.find(x=>x.id===ov);if(!t)return;if(!/\.pdf$/i.test(f.name)){toast("Elige un archivo PDF.");return}
@@ -1790,6 +1835,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.tdel){if(ask("t"+t.dataset.tdel)){fsDrop(+t.dataset.tdel);S.topics=S.topics.filter(x=>x.id!==+t.dataset.tdel);delete sel[t.dataset.tdel];if(DB)DB.doc("data/users/"+UID+"/t_"+t.dataset.tdel).delete().catch(()=>{});delete lastT[t.dataset.tdel];TSY.delete(+t.dataset.tdel);svTSY();delete S.chats[t.dataset.tdel];if(DB)DB.doc("data/users/"+UID+"/c_"+t.dataset.tdel).delete().catch(()=>{});save();draw()}return}
   if(t.id==="gen"){gen();return}
   if(t.dataset.o!==undefined&&qz&&!qz.ans){const j=+t.dataset.o,x=qz.q[qz.i];qz.pk[qz.i]=j;qz.ans=true;if(j===x.a)qz.sc++;draw();return}
+  if(t.id==="qd"){qDoubt();return}
   if(t.id==="qn"){qz.i++;qz.ans=false;if(qz.i>=qz.q.length){finishQuiz();boom(t,["🎉","⭐","🦷"])}draw();return}
   if(t.id==="qend"){qz=null;draw();return}
   if(t.dataset.dd!==undefined){vd=t.dataset.dd==="0"?TODAY:addD(vd,+t.dataset.dd);draw();return}
